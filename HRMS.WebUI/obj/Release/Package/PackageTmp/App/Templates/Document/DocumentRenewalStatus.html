@@ -1,0 +1,86 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Document Status <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateDocumentRenewalStatus()" />
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblDocumentRenewalStatus" class="table table-striped table-bordered  jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Document Status</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlDocumentRenewalStatus" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Document Status</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmDocumentRenewalStatus">
+                    <input type="hidden" id="txtDocumentRenewalStatusId" data-ng-model="documentRenewalStatus.DocumentRenewalStatusID" />
+                    <label>Document Renewal Status Name :</label> <input  ng-class="frmDocumentRenewalStatus.txtDocumentRenewalStatusName.$invalid && frmDocumentRenewalStatus.txtDocumentRenewalStatusName.$dirty ? 'border-red' : ''" name="txtDocumentRenewalStatusName" id="txtDocumentRenewalStatusName" data-ng-model="documentRenewalStatus.DocumentRenewalStatusName" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmDocumentRenewalStatus.txtDocumentRenewalStatusName.$dirty && frmDocumentRenewalStatus.txtDocumentRenewalStatusName.$error.required">Required</span>
+                    <label>Remarks :</label> <textarea id="txtDocumentRenewalStatusRemarks" ng-model="documentRenewalStatus.Remarks" class="input-sm form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateDocumentRenewalStatus" ng-click="createDocumentRenewalStatus()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateDocumentRenewalStatus" ng-click="updateDocumentRenewalStatus()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreate"ng-click="deleteDocumentRenewalStatus()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlDocumentRenewalStatusDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Document Status</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteDocumentRenewalStatus()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+            <!-- /page content -->
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

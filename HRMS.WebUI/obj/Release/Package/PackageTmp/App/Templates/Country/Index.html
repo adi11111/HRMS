@@ -1,0 +1,91 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Country <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreate()" />
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblCountry" class="table  table-bordered table-responsive  jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Country Name</th>
+                                        <th>Short Form</th>
+                                        <th>Currency</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlCountry" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Country</h4>
+                </div>
+                <div class="modal-body"ng-form name="frmCountry" id="frmCountry">
+                    <input type="hidden" id="txtCountryId" ng-model="country.CountryID" />
+
+                    <label>Country Name :</label> <input ng-class="frmCountry.txtCountryName.$dirty && frmCountry.txtCountryName.$invalid ? 'border-red' : ''" name="txtCountryName"  id="txtCountryName" ng-model="country.CountryName" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmCountry.txtCountryName.$dirty && frmCountry.txtCountryName.$error.required">Required</span>
+                    <label>Short Form :</label> <input ng-class="frmCountry.txtShortForm.$invalid && frmCountry.txtShortForm.$dirty ? 'border-red' : ''" name="txtShortForm"  id="txtShortForm" ng-model="country.ShortForm" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmCountry.txtShortForm.$dirty && frmCountry.txtShortForm.$error.required">Required</span>
+                    <label>Currency :</label> <input ng-class="frmCountry.txtCurrency.$invalid && frmCountry.txtCurrency.$dirty ? 'border-red' : ''" name="txtCurrency"  id="txtCurrency" ng-model="country.Currency" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmCountry.txtCurrency.$dirty && frmCountry.txtCurrency.$error.required">Required</span>
+                    <label>Remarks :</label> <textarea id="txtCountryRemarks" ng-model="country.Remarks" class="input-sm form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreate"  ng-click="createCountry()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreate"  ng-click="updateCountry()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreate" ng-click="deleteCountry()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="mdlCountryDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Country</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteCountry()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- /page content -->

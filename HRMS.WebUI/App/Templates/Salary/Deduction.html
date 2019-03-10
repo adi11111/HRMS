@@ -1,0 +1,258 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Salary Adjustment <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateDeduction()" /> 
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblDeduction" class="table  table-bordered table-responsive jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Employee</th>
+                                        <th>Deduction Type</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Operation</th>
+                                        <th>Basic</th>
+                                        <th>Telephone</th>
+                                        <th>Housing</th>
+                                        <th>Transport</th>
+                                        <th>Total Deduction</th>
+                                        <th>Total Months</th>
+                                        <th>Other (Allowance Type)</th>
+                                        <th>Other (Amount)</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlDeduction" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Salary Adjustment</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmDeduction">
+                    <input type="hidden" id="txtDeductionId" ng-model="deduction.DeductionID" />
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="action" class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary" ng-click="setAction('Deduction')" id="lblDeduction">
+                                    <input type="radio" name="action" value="on"> &nbsp; Deduction &nbsp;
+                                </label>
+                                <label class="btn btn-default" ng-click="setAction('Addition')" id="lblAddition">
+                                    <input type="radio" name="action" value="off"> Addition
+                                </label>
+                            </div>
+                        </div>
+                        </div>
+                        <label>Employee Name :</label>
+                        <div class="dropdown dropdown-scroll">
+                            <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtEmployeeID" data-toggle="dropdown" ng-class="frmDeduction.txtEmployeeID.$invalid && frmDeduction.txtEmployeeID.$dirty ? 'border-red' : ''" name="txtEmployeeID" ng-model="deduction.EmployeeID" required>
+                                <span id="txtSelectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <div class="input-group input-group-sm search-control">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Employee" ng-model="emp" />
+                                    </div>
+                                </li>
+                                <li role="presentation" ng-repeat='item in employees | filter:emp'>
+                                    <a href="javascript:void(0)" ng-click="setEmployee(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="text-danger right" ng-show="frmDeduction.txtEmployeeID.$dirty && frmDeduction.txtEmployeeID.$error.required">Required</span>
+                        <div class="row" ng-hide="deduction.IsAddition">
+                            <div class="col-lg-6">
+                                <label>Deduction Type :</label>
+                                <div class="dropdown dropdown-scroll">
+                                    <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtDeductionTypeID" data-toggle="dropdown" ng-class="frmDeduction.txtDeductionTypeID.$invalid && frmDeduction.txtDeductionTypeID.$dirty ? 'border-red' : ''" name="txtDeductionTypeID" ng-model="deduction.DeductionTypeID" required>
+                                        <span id="txtSelectedEmployeeName" ng-bind="selectedDeductionTypeName"></span><span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation">
+                                            <div class="input-group input-group-sm search-control">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Deduction Tpe" ng-model="query" />
+                                            </div>
+                                        </li>
+                                        <li role="presentation" ng-repeat='item in deductionTypes | filter:query'>
+                                            <a href="javascript:void(0);" ng-click="setDeductionType(item.DeductionTypeID,item.DeductionTypeName)"> {{item.DeductionTypeName}} </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span class="text-danger right" ng-show="frmDeduction.txtDeductionTypeID.$dirty && frmDeduction.txtDeductionTypeID.$error.required">Required</span>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Deduction On :</label>
+                                <div class="dropdown dropdown-scroll">
+                                    <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtDeductionOn" data-toggle="dropdown" ng-class="frmDeduction.txtDeductionOn.$invalid && frmDeduction.txtDeductionOn.$dirty ? 'border-red' : ''" name="txtDeductionOn" ng-model="deduction.DeductionOn" required disabled>
+                                        <span id="txtSelectedEmployeeName" ng-bind="selectedDeductionOnName"></span><span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation">
+                                            <div class="input-group input-group-sm search-control">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Deduction On" ng-model="do" />
+                                            </div>
+                                        </li>
+                                        <li role="presentation" ng-repeat='item in deductionOn | filter:do'>
+                                            <a href="javascript:void(0);" ng-click="setDeductionOn(item)"> {{item}} </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span class="text-danger right" ng-show="frmDeduction.txtDeductionOn.$dirty && frmDeduction.txtDeductionOn.$error.required">Required</span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Start Date :</label> <input ng-class="frmDeduction.txtStartDate.$invalid && frmDeduction.txtStartDate.$dirty ? 'border-red' : ''" name="txtStartDate" id="txtStartDate" ng-change="dateChange()" ng-model="deduction.StartDate" class="form-control input-sm" datepicker required />
+                                <span class="text-danger right" ng-show="frmDeduction.txtStartDate.$dirty && frmDeduction.txtStartDate.$error.required">Required</span>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>End Date :</label> <input ng-class="frmDeduction.txtEndDate.$invalid && frmDeduction.txtEndDate.$dirty ? 'border-red' : ''" name="txtEndDate" id="txtEndDate" ng-change="dateChange()" ng-model="deduction.EndDate" class="form-control input-sm" datepicker required />
+                                <span class="text-danger right" ng-show="frmDeduction.txtEndDate.$dirty && frmDeduction.txtEndDate.$error.required">Required</span>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Total Month :</label> <input type="text" id="txtTotalMonth" ng-model="deduction.TotalMonth" disabled class="form-control input-sm" />
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div ng-hide="deduction.IsAddition">
+                                    <label>Basic :</label> <input ng-class="frmDeduction.txtBasic.$invalid && frmDeduction.txtBasic.$dirty ? 'border-red' : ''" name="txtBasic" type="number" id="txtBasic" ng-model="deduction.Basic " ng-change="deductionChange();" ng-blur="checkBasicLimit()" class="form-control input-sm individual-deduction" required disabled />
+                                    <span class="text-danger right" ng-show="frmDeduction.txtBasic.$dirty && frmDeduction.txtBasic.$error.required">Required</span>
+                                    <label>Housing :</label> <input ng-class="frmDeduction.txtHousing.$invalid && frmDeduction.txtHousing.$dirty ? 'border-red' : ''" name="txtHousing" type="number" id="txtHousing" ng-model="deduction.Housing" ng-change="deductionChange();" ng-blur="checkHousingLimit()" class="form-control input-sm individual-deduction" required disabled />
+                                    <span class="text-danger right" ng-show="frmDeduction.txtHousing.$dirty && frmDeduction.txtHousing.$error.required">Required</span>
+                                </div>
+                                <label>Other (Allowance Type)  :</label>
+                                <input ng-model="deduction.OtherText " id="txtOtherText" disabled class="form-control input-sm" />
+                            </div>
+                            <div class="col-lg-6">
+                                <div ng-hide="deduction.IsAddition">
+                                    <label>Telephone :</label> <input ng-class="frmDeduction.txtTelephone.$invalid && frmDeduction.txtTelephone.$dirty ? 'border-red' : ''" name="txtTelephone" type="number" id="txtTelephone" ng-model="deduction.Telephone" ng-change="deductionChange();" ng-blur="checkTelephoneLimit()" class="form-control input-sm individual-deduction" required disabled />
+                                    <span class="text-danger right" ng-show="frmDeduction.txtTelephone.$dirty && frmDeduction.txtTelephone.$error.required">Required</span>
+                                    <label>Transport :</label> <input ng-class="frmDeduction.txtTransport.$invalid && frmDeduction.txtTransport.$dirty ? 'border-red' : ''" name="txtTransport" type="number" id="txtTransport" ng-model="deduction.Transport" ng-change="deductionChange();" ng-blur="checkTransportLimit()" class="form-control input-sm individual-deduction" required disabled />
+                                    <span class="text-danger right" ng-show="frmDeduction.txtDepartmentName.$dirty && frmDeduction.txtDepartmentName.$error.required">Required</span>
+                                </div>
+                                <label>Other (Amount) :</label> <input type="number" id="txtOtherNumber" ng-model="deduction.OtherNumber" class="form-control input-sm" ng-change="deductionChange();" ng-blur="checkOtherLimit()" disabled />
+                            </div>
+                        </div>
+
+
+
+
+                        <!--<div class="dropdown dropdown-scroll">
+            <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtOtherText" data-toggle="dropdown" ng-model="deduction.OtherText" ng-class="frmDeduction.txtOtherText.$invalid && frmDeduction.txtOtherText.$dirty ? 'border-red' : ''" name="txtOtherText" required>
+                <span id="txtSelectedOtherTextName" ng-bind="selectedOtherTextName"></span><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                    <div class="input-group input-group-sm search-control">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Allowance Type" ng-model="other" />
+                    </div>
+                </li>
+                <li role="presentation" ng-repeat='item in otherTexts | filter:other'>
+                    <a href="javascript:void(0)" ng-click="setOtherText(item)"> {{item}} </a>
+                </li>
+            </ul>
+        </div>-->
+
+                        <label>Total Adjustment :</label> <input ng-class="frmDeduction.txtTotalDeduction.$invalid && frmDeduction.txtTotalDeduction.$dirty ? 'border-red' : ''" name="txtTotalDeduction" type="number" id="txtTotalDeduction" ng-model="deduction.TotalAmount" ng-change="totalDeductionChange()" class="form-control input-sm" disabled required />
+                        <span class="text-danger right" ng-show="frmDeduction.txtTotalDeduction.$dirty && frmDeduction.txtTotalDeduction.$error.required">Required</span>
+
+                        <label>Remarks :</label> <textarea id="txtDeductionRemarks" ng-model="deduction.Remarks" class="input-sm form-control"></textarea>
+                        <br />
+                        <button type="button" class="btn btn-success" ng-click="calculateDeduction()">Calculate Salary Adjustment</button>
+                        <div ng-show="isDeductionDetail">
+                            <table class="table table-bordered table-hover  ">
+                                <thead>
+                                    <tr>
+                                        <td>#</td>
+                                        <td> Adjustment Date</td>
+                                        <td>Amount</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in calculatedDeductions">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{item.DeductionDate}}</td>
+                                        <td><input type="number" ng-disabled="$last" ng-change="amountChange($index,item.TotalDeduction)" id="txtDeductionDetail_{{$index + 1}}" ng-model="item.TotalDeduction" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+               
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateDeduction" ng-click="createDeduction()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateDeduction" ng-click="updateDeduction()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" ng-hide="isCreateDeduction"ng-click="deleteDeduction()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlDeductionDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Dudecution</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteDeduction()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

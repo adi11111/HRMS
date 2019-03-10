@@ -1,0 +1,197 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Leave <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreate()" /> <div class="table-responsive col-lg-12">
+                                <table id="tblLeave" class="table  table-bordered table-responsive jambo_table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Action</th>
+                                            <th>Employee Name</th>
+                                            <th>Leave Type</th>
+                                            <th>Leave Status</th>
+                                            <th>Date</th>
+                                            <th>From Date</th>
+                                            <th>To Date</th>
+                                            <th>Leave Balance</th>
+                                            <th>Total Leave Days</th>
+                                            <th>Leave Balance As Now</th>
+                                            <!--<th>Leave Document</th>-->
+                                            <th>Remarks</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+</div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlLeave" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Leave</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmLeave">
+                    <input type="hidden" id="txtLeaveId" ng-model="leave.LeaveID" />
+                    <label>Employee Name :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmLeave.txtEmployeeID.$invalid && frmLeave.txtEmployeeID.$dirty ? 'border-red' : ''" name="txtEmployeeID" ng-model="leave.EmployeeID" required>
+                            <span id="txtSelectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Employee" ng-model="emp" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in employees | filter:emp'>
+                                <a href="javascript:void(0)" ng-click="setEmployee(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmLeave.txtEmployeeID.$dirty && frmLeave.txtEmployeeID.$error.required">Required</span>
+                    <label>Date :</label> <input ng-class="frmLeave.txtDate.$invalid && frmLeave.txtDate.$dirty ? 'border-red' : ''" name="txtDate" id="txtDate" ng-model="leave.Date" class="form-control input-sm" datepicker required />
+                    <span class="text-danger right" ng-show="frmLeave.txtDate.$dirty && frmLeave.txtDate.$error.required">Required</span>
+
+                    <label>Leave Type :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmLeave.txtLeaveTypeID.$invalid && frmLeave.txtLeaveTypeID.$dirty ? 'border-red' : ''" name="txtLeaveTypeID" ng-model="leave.LeaveTypeID" required>
+                            <span id="txtSelectedLeaveTypeName" ng-bind="selectedLeaveTypeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Leave Type" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in leaveTypes | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setLeaveType(item.LeaveTypeID,item.LeaveTypeName)"> {{item.LeaveTypeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmLeave.txtLeaveTypeID.$dirty && frmLeave.txtLeaveTypeID.$error.required">Required</span>
+                   
+                    <label>Leave Balance :</label><input ng-class="frmLeave.txtLeaveBalance.$invalid && frmLeave.txtLeaveBalance.$dirty ? 'border-red' : ''" name="txtLeaveBalance" type="number" id="txtLeaveBalance" ng-model="leave.LeaveBalance" class="form-control input-sm" required disabled />
+                    <label>From Date :</label><input ng-class="frmLeave.txtFromDate.$invalid && frmLeave.txtFromDate.$dirty ? 'border-red' : ''" name="txtFromDate" id="txtFromDate" ng-model="leave.FromDate" class="form-control input-sm" datepicker required ng-change="dateChange();" />
+                    <span class="text-danger right" ng-show="frmLeave.txtFromDate.$dirty && frmLeave.txtFromDate.$error.required">Required</span>
+                    <label>To Date :</label> <input ng-class="frmLeave.txtToDate.$invalid && frmLeave.txtToDate.$dirty ? 'border-red' : ''" name="txtToDate" id="txtToDate" ng-model="leave.ToDate" class="form-control input-sm" datepicker required ng-change="dateChange();" />
+                    <span class="text-danger right" ng-show="frmLeave.txtToDate.$dirty && frmLeave.txtToDate.$error.required">Required</span>
+                    <span class="text-danger right" ng-show="frmLeave.txtLeaveBalance.$dirty && frmLeave.txtLeaveBalance.$error.required">Required</span>
+                    <label>Total Leave Days :</label><input ng-class="frmLeave.txtTotalLeaveDays.$invalid && frmLeave.txtTotalLeaveDays.$dirty ? 'border-red' : ''" name="txtTotalLeaveDays" type="number" id="txtTotalLeaveDays" ng-model="leave.TotalLeaveDays" class="form-control input-sm" required ng-change="leaveDaysChange()" />
+                    <span class="text-danger right" ng-show="frmLeave.txtTotalLeaveDays.$dirty && frmLeave.txtTotalLeaveDays.$error.required">Required</span>
+                    <label>Remaining Leave Days :</label><input ng-model="leave.RemainingLeaveDays" class="form-control input-sm" disabled />
+                    <!--<label>Leave Document :</label><input type="file" id="txtLeaveDocumentPath" fileread="leave.LeaveDocumentPath" class="form-control input-sm" required />
+                    <span class="text-danger right hide">Required</span>-->
+                   
+                  
+                    <label>Manager Approval :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button ng-disabled="isManager == false" class="btn btn-default dropdown-toggle col-lg-12" type="button" id="btnManagerApproval" data-toggle="dropdown">
+                            <span id="txtSelectedManagerApprovalName" ng-bind="selectedManagerApprovalName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Manager Approval Status"  />
+                                </div>
+                            </li>
+                            <li role="presentation">
+                                <a href="javascript:void(0)" ng-click="setManagerApproval('Approved')">Approved  </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="javascript:void(0)" ng-click="setManagerApproval('Rejected')">Rejected  </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right hidden spnManagerApproval">Required</span>
+
+                    <label>General Manager Approval :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button ng-disabled="isManagerApproved == false || isGM == false" class="btn btn-default dropdown-toggle col-lg-12" type="button" id="btnGMApproval" data-toggle="dropdown" >
+                            <span id="txtSelectedGMApprovalName" ng-bind="selectedGMApprovalName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="GM Approval Status" />
+                                </div>
+                            </li>
+                            <li role="presentation">
+                                <a href="javascript:void(0)" ng-click="setGMApproval('Approved')">Approved  </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="javascript:void(0)" ng-click="setGMApproval('Rejected')">Rejected  </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right hidden spnGMApproval">Required</span>
+
+                    <label>Remarks :</label> <textarea id="txtLeaveRemarks" ng-model="leave.Remarks" class="input-sm form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreate" ng-click="createLeave()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-show="isCreate == false && isEdit == true"  ng-click="updateLeave()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreate"ng-click="deleteLeave()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlLeaveDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Leave</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteLeave()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+            <!-- /page content -->
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

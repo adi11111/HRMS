@@ -1,0 +1,146 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Payslips <small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" ng-form name="frmPayslip">
+                        <div class="dropdown dropdown-scroll  col-lg-2">
+                            <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="payslip.MonthID" ng-class="frmPayslip.txtMonthID.$invalid && frmPayslip.txtMonthID.$dirty ? 'border-red' : ''" name="txtMonthID" required>
+                                <span ng-bind="selectedMonthName">Month</span><span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <div class="input-group input-group-sm search-control">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Month" ng-model="query" />
+                                    </div>
+                                </li>
+                                <li role="presentation" ng-repeat='item in months | filter:query'>
+                                    <a href="javascript:void(0)" ng-click="setMonth(item);"> {{item}} </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--<label>Company :</label>-->
+
+                        <div class="dropdown dropdown-scroll  col-lg-2">
+                            <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmPayslip.txtCompanyID.$invalid && frmPayslip.txtCompanyID.$dirty ? 'border-red' : ''" name="txtCompanyID" ng-model="payslip.CompanyID" required>
+                                <span id="txtSelectedCompanyName" ng-bind="selectedCompanyName"></span><span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <div class="input-group input-group-sm search-control">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Company" ng-model="companyy" />
+                                    </div>
+                                </li>
+                                <li role="presentation" ng-repeat='item in companies | filter:companyy'>
+                                    <a href="javascript:void(0)" ng-click="setCompany(item.CompanyID,item.CompanyName)"> {{item.CompanyName}} </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width:150px;float:right;" value="Generate Payslip" ng-click="generatePayslip()" />
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblPayslip" class="table  table-bordered table-responsive  jambo_table bulk_action">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="icheckbox_flat-blue checkbox-container" ng-click="switchChecked('chkAll');$event.stopPropagation();"><input type="checkbox" id="chkAll" class="flat" /> <ins class="iCheck-helper"></ins></div>
+                                        </th>
+                                        <th>Date</th>
+                                        <th>Employee</th>
+                                        <th>Total Days</th>
+                                        <th>Total Working Days</th>
+                                        <th>Total Present Days</th>
+                                        <th>Total Public Holidays</th>
+                                        <th>Total Weekend Days</th>
+                                        <th>Total Leave Days</th>
+                                        <th>Total Absent Days</th>
+                                        <th>Basic</th>
+                                        <th>Telephone</th>
+                                        <th>Housing</th>
+                                        <th>Transport</th>
+                                        <th>Other Text</th>
+                                        <th>Other Number</th>
+                                        <th>Addition Text</th>
+                                        <th>Addition Number</th>
+                                        <th>Total Salary</th>
+                                        <th>Gratuity</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <input type="button" class="form-control btn-success btn btn-sm" style="margin-top: 10px;width:150px;float:right;" value="Process Payslip" ng-show="selectedEmployees.length > 0" ng-click="processPayslip()" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <!--<div id="mdlPayslip" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Payslip</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="txtPayslipId" ng-model="payslip.PayslipId" />
+
+                    <label>Employee Name :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            <span id="txtSelectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Employee" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in employees | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setEmployee(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <label>Basic :</label> <input type="number" id="txtBasic" ng-model="payslip.Basic" class="form-control input-sm" />
+                    <label>Telephone :</label> <input type="number" id="txtTelephone" ng-model="payslip.Telephone" class="form-control input-sm" />
+                    <label>Housing :</label> <input type="number" id="txtHousing" ng-model="payslip.Housing" class="form-control input-sm" />
+                    <label>Transport :</label> <input type="number" id="txtTransport " ng-model="payslip.Transport " class="form-control input-sm" />
+                    <label>Total Payslip :</label> <input type="number" id="txtTotalPayslip " ng-model="payslip.TotalSalary" class="form-control input-sm" />
+                    <label>Other Text  :</label> <input id="txtOtherText  " ng-model="payslip.OtherText  " class="form-control input-sm" />
+                    <label>Other Number :</label> <input id="txtOtherNumber " ng-model="payslip.OtherNumber " class="form-control input-sm" />
+                    <label>Remarks :</label> <input type="text" id="txtPayslipRemarks" ng-model="payslip.Remarks" class="input-sm form-control"   />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+</div>
+
+<!-- /page content -->

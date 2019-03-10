@@ -1,0 +1,14 @@
+C:\Projects\EMP\EMP.Logging\bin\Debug\HRMS.Logging.dll
+C:\Projects\EMP\EMP.Logging\bin\Debug\HRMS.Logging.pdb
+C:\Projects\EMP\EMP.Logging\obj\Debug\HRMS.Logging.csprojResolveAssemblyReference.cache
+C:\Projects\EMP\EMP.Logging\obj\Debug\HRMS.Logging.dll
+C:\Projects\EMP\EMP.Logging\obj\Debug\HRMS.Logging.pdb
+C:\Projects\EMP\HRMS.Logging\bin\Debug\HRMS.Logging.dll
+C:\Projects\EMP\HRMS.Logging\bin\Debug\HRMS.Logging.pdb
+C:\Projects\EMP\HRMS.Logging\obj\Debug\HRMS.Logging.dll
+C:\Projects\EMP\HRMS.Logging\obj\Debug\HRMS.Logging.pdb
+C:\Projects\HRMS\HRMS.Logging\bin\Debug\HRMS.Logging.dll
+C:\Projects\HRMS\HRMS.Logging\bin\Debug\HRMS.Logging.pdb
+C:\Projects\HRMS\HRMS.Logging\obj\Debug\HRMS.Logging.csprojResolveAssemblyReference.cache
+C:\Projects\HRMS\HRMS.Logging\obj\Debug\HRMS.Logging.dll
+C:\Projects\HRMS\HRMS.Logging\obj\Debug\HRMS.Logging.pdb

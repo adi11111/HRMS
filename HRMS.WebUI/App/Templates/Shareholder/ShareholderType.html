@@ -1,0 +1,85 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>ShareHolder Type <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateShareHolderType()" /> 
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblShareHolderType" class="table  table-bordered table-responsive jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>ShareHolderType Name</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlShareHolderType" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">ShareHolder Type</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmShareholderType">
+                    <input type="hidden" id="txtShareHolderTypeId" ng-model="shareHolderType.ShareHolderTypeID" />
+                    <label>ShareHolder Type Name :</label> <input ng-class="frmShareholderType.txtShareHolderTypeName.$invalid && frmShareholderType.txtShareHolderTypeName.$dirty ? 'border-red' : ''" name="txtShareHolderTypeName"  id="txtShareHolderTypeName" ng-model="shareHolderType.ShareHolderTypeName" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmShareholderType.txtShareHolderTypeName.$dirty && frmShareholderType.txtShareHolderTypeName.$error.required">Required</span>
+                    <label>Remarks :</label> <textarea id="txtShareholderTypeRemarks" ng-model="shareHolderType.Remarks" class="input-sm form-control" ></textarea>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateShareHolderType" ng-click="createShareHolderType();">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateShareHolderType" ng-click="updateShareHolderType();">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreateShareHolderType"ng-click="deleteShareHolderType()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlShareholderTypeDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Shareholder Type</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteShareHolderType()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

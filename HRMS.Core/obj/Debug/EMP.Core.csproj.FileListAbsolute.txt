@@ -1,0 +1,10 @@
+C:\Projects\EMP\EMP.Core\bin\Debug\EMP.Core.dll.config
+C:\Projects\EMP\EMP.Core\bin\Debug\EMP.Core.dll
+C:\Projects\EMP\EMP.Core\bin\Debug\EMP.Core.pdb
+C:\Projects\EMP\EMP.Core\bin\Debug\EntityFramework.dll
+C:\Projects\EMP\EMP.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\EMP\EMP.Core\bin\Debug\EntityFramework.xml
+C:\Projects\EMP\EMP.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\EMP\EMP.Core\obj\Debug\EMP.Core.csprojResolveAssemblyReference.cache
+C:\Projects\EMP\EMP.Core\obj\Debug\EMP.Core.dll
+C:\Projects\EMP\EMP.Core\obj\Debug\EMP.Core.pdb

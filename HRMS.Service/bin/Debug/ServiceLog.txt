@@ -1,0 +1,92 @@
+Simple Service started 14/08/2017 03:44:41 PM
+Simple Service Mode: DAILY 14/08/2017 03:44:41 PM
+Simple Service scheduled to run after: 0 day(s) 2 hour(s) 56 minute(s) 18 seconds(s) 14/08/2017 03:44:41 PM
+Simple Service stopped 14/08/2017 03:49:02 PM
+Simple Service started 14/08/2017 03:49:04 PM
+Simple Service Mode: DAILY 14/08/2017 03:49:04 PM
+Simple Service scheduled to run after: 0 day(s) 2 hour(s) 51 minute(s) 55 seconds(s) 14/08/2017 03:49:04 PM
+Simple Service stopped 14/08/2017 03:49:16 PM
+Simple Service started 14/08/2017 03:49:17 PM
+Simple Service Mode: DAILY 14/08/2017 03:49:17 PM
+Simple Service scheduled to run after: 0 day(s) 2 hour(s) 51 minute(s) 42 seconds(s) 14/08/2017 03:49:17 PM
+Simple Service stopped 14/08/2017 03:49:43 PM
+Simple Service started 14/08/2017 03:49:44 PM
+Simple Service Mode: DAILY 14/08/2017 03:49:44 PM
+Simple Service scheduled to run after: 0 day(s) 2 hour(s) 51 minute(s) 15 seconds(s) 14/08/2017 03:49:44 PM
+Simple Service stopped 14/08/2017 03:51:20 PM
+Simple Service started 14/08/2017 03:51:22 PM
+Simple Service Mode: INTERVAL 14/08/2017 03:51:22 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 03:51:22 PM
+Simple Service Log: 14/08/2017 03:52:35 PM
+Simple Service started 14/08/2017 03:54:01 PM
+Simple Service Mode: INTERVAL 14/08/2017 03:54:01 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 03:54:01 PM
+Simple Service Log: 14/08/2017 03:55:05 PM
+Simple Service started 14/08/2017 03:55:40 PM
+Simple Service Mode: INTERVAL 14/08/2017 03:55:40 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 03:55:40 PM
+Simple Service Log: 14/08/2017 03:56:43 PM
+Simple Service started 14/08/2017 03:58:22 PM
+Simple Service Mode: INTERVAL 14/08/2017 03:58:22 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 03:58:22 PM
+Simple Service Log: 14/08/2017 03:59:25 PM
+Simple Service started 14/08/2017 04:02:16 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:02:16 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:02:16 PM
+Simple Service Log: 14/08/2017 04:03:20 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:03:46 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:03:46 PM
+Simple Service Log: 14/08/2017 04:04:49 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:05:05 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:05:05 PM
+Simple Service Log: 14/08/2017 04:06:05 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:06:05 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:06:05 PM
+Simple Service stopped 14/08/2017 04:06:40 PM
+Simple Service started 14/08/2017 04:08:55 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:08:55 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:08:55 PM
+Simple Service Log: 14/08/2017 04:09:58 PM
+Simple Service started 14/08/2017 04:11:26 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:11:26 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:11:26 PM
+Simple Service Log: 14/08/2017 04:12:26 PM
+Simple Service started 14/08/2017 04:12:37 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:12:37 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:12:37 PM
+Simple Service Log: 14/08/2017 04:13:40 PM
+Simple Service started 14/08/2017 04:15:26 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:15:26 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:15:26 PM
+Simple Service Log: 14/08/2017 04:16:29 PM
+Trying to send email to: adil_dashing01@yahoo.com
+Simple Service started 14/08/2017 04:17:05 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:17:05 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:17:05 PM
+Simple Service Log: 14/08/2017 04:18:07 PM
+Trying to send email to: adil_dashing01@yahoo.com
+Email sent successfully to: adil_dashing01@yahoo.com
+Simple Service started 14/08/2017 04:42:52 PM
+Simple Service Mode: INTERVAL 14/08/2017 04:42:52 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:42:52 PM
+Simple Service Log: 14/08/2017 04:43:55 PM
+Trying to send email to: adil_dashing01@yahoo.com
+Email sent successfully to: adil_dashing01@yahoo.com
+Trying to send email to: adi.arman321@gmail.com
+Email sent successfully to: adi.arman321@gmail.com
+Simple Service Mode: INTERVAL 14/08/2017 04:44:17 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:44:17 PM
+Simple Service Log: 14/08/2017 04:45:19 PM
+Trying to send email to: adil_dashing01@yahoo.com
+Email sent successfully to: adil_dashing01@yahoo.com
+Trying to send email to: adi.arman321@gmail.com
+Email sent successfully to: adi.arman321@gmail.com
+Simple Service Mode: INTERVAL 14/08/2017 04:46:04 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:46:04 PM
+Simple Service Log: 14/08/2017 04:47:04 PM
+Trying to send email to: adil_dashing01@yahoo.com
+Email sent successfully to: adil_dashing01@yahoo.com
+Trying to send email to: adi.arman321@gmail.com
+Email sent successfully to: adi.arman321@gmail.com
+Simple Service Mode: INTERVAL 14/08/2017 04:47:09 PM
+Simple Service scheduled to run after: 0 day(s) 0 hour(s) 1 minute(s) 0 seconds(s) 14/08/2017 04:47:09 PM

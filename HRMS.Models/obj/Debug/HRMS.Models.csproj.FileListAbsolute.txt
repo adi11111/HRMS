@@ -1,0 +1,13 @@
+C:\Projects\EMP\EMP.Models\bin\Debug\HRMS.Models.dll
+C:\Projects\EMP\EMP.Models\bin\Debug\HRMS.Models.pdb
+C:\Projects\EMP\EMP.Models\obj\Debug\HRMS.Models.dll
+C:\Projects\EMP\EMP.Models\obj\Debug\HRMS.Models.pdb
+C:\Projects\EMP\HRMS.Models\bin\Debug\HRMS.Models.dll
+C:\Projects\EMP\HRMS.Models\bin\Debug\HRMS.Models.pdb
+C:\Projects\EMP\HRMS.Models\obj\Debug\HRMS.Models.dll
+C:\Projects\EMP\HRMS.Models\obj\Debug\HRMS.Models.pdb
+C:\Projects\HRMS\HRMS.Models\bin\Debug\HRMS.Models.dll
+C:\Projects\HRMS\HRMS.Models\bin\Debug\HRMS.Models.pdb
+C:\Projects\HRMS\HRMS.Models\obj\Debug\HRMS.Models.csprojResolveAssemblyReference.cache
+C:\Projects\HRMS\HRMS.Models\obj\Debug\HRMS.Models.dll
+C:\Projects\HRMS\HRMS.Models\obj\Debug\HRMS.Models.pdb

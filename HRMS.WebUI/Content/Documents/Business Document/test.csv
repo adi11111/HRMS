@@ -1,0 +1,21 @@
+Daily Report,01/05/2017~23/05/2017,,,,,,
+1/5/2017,,,,,,,
+ID,User Name,Department,Shift,First-In Time,Last-Out Time,Result,WorkTime
+,,,,,,,
+133,Borhan,Sales,Shift-3,12:04,14:02,Late In/Early Out,1:50
+134,Adil,IT,Shift-2,8:15,16:38,Early Out,8:20
+2/5/2017,,,,,,,
+ID,User Name,Department,Shift,First-In Time,Last-Out Time,Result,WorkTime
+,,,,,,,
+133,Borhan,Sales,Shift-3,0:00,0:00,Absence,0:00
+134,Adil,IT,Shift-2,8:08,16:50,Early Out,8:40
+3/5/2017,,,,,,,
+ID,User Name,Department,Shift,First-In Time,Last-Out Time,Result,WorkTime
+,,,,,,,
+133,Borhan,Sales,Shift-3,10:58,12:38,Late In/Early Out,1:30
+134,Adil,IT,Shift-2,8:02,16:42,Early Out,8:30
+4/5/2017,,,,,,,
+ID,User Name,Department,Shift,First-In Time,Last-Out Time,Result,WorkTime
+,,,,,,,
+133,Borhan,Sales,Shift-3,0:00,0:00,Absence,0:00
+134,Adil,IT,Shift-2,8:13,16:56,Normal,8:40

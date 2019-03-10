@@ -1,0 +1,189 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Shareholder <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreate()" />
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblShareholder" class="table  table-bordered table-responsive jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Shareholder Name</th>
+                                        <th>Shareholder Type</th>
+                                        <th>Total Shares</th>
+                                        <th>Mobile Number</th>
+                                        <th>Contact Number</th>
+                                        <th>Address</th>
+                                        <th>Digital Signature</th>
+                                        <th>Company</th>
+                                        <th>Employee</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlShareholder" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Shareholder</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmShareholder">
+                    <input type="hidden" id="txtShareholderId" ng-model="shareholder.ShareHolderID" />
+                    <label>Shareholder Name :</label> <input ng-class="frmShareholder.txtShareholderName.$invalid && frmShareholder.txtShareholderName.$dirty ? 'border-red' : ''" name="txtShareholderName"  id="txtShareholderName" ng-model="shareholder.ShareHolderName" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmShareholder.txtShareholderName.$dirty && frmShareholder.txtShareholderName.$error.required">Required</span>
+                    <label>Shareholder Type :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtShareHolderTypeID" data-toggle="dropdown" ng-model="shareholder.ShareHolderTypeID"  ng-class="frmShareholder.txtShareHolderTypeID.$invalid && frmShareholder.txtShareHolderTypeID.$dirty ? 'border-red' : ''" name="txtShareHolderTypeID" required >
+                            <span id="txtSelectedShareholderTypeName" ng-bind="selectedShareholderTypeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Shareholder Type" ng-model="type" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in shareHolderTypes | filter:type'>
+                                <a href="javascript:void(0);" ng-click="setShareholderType(item.ShareHolderTypeID,item.ShareHolderTypeName);"> {{item.ShareHolderTypeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <span class="text-danger right" ng-show="frmShareholder.txtShareHolderTypeID.$dirty && frmShareholder.txtShareHolderTypeID.$error.required">Required</span>
+                   
+                    <label>Company :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtCompanyID" ng-model="shareholder.CompanyID" data-toggle="dropdown" ng-class="frmShareholder.txtCompanyID.$invalid && frmShareholder.txtCompanyID.$dirty ? 'border-red' : ''" name="txtCompanyID" required>
+                            <span id="txtSelectedCompanyame" ng-bind="selectedCompanyName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Region" ng-model="Companyy" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in companies | filter:Companyy'>
+                                <a href="javascript:void(0)" ng-click="setCompany(item.CompanyID,item.CompanyName)"> {{item.CompanyName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmShareholder.txtCompanyID.$dirty && frmShareholder.txtCompanyID.$error.required">Required</span>
+                    <label>Employee :</label>
+
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtEmployeeID" data-toggle="dropdown" ng-model="shareholder.EmployeeID" ng-class="frmShareholder.txtEmployeeID.$invalid && frmShareholder.txtEmployeeID.$dirty ? 'border-red' : ''" name="txtEmployeeID" required>
+                            <span id="txtSelectedCompanyName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Location" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in employees | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setEmployee(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <label>Mobile Number :</label> <input ng-class="frmShareholder.txtMobileNumber.$invalid && frmShareholder.txtMobileNumber.$dirty ? 'border-red' : ''" name="txtMobileNumber"  id="txtMobileNumber" ng-model="shareholder.MobileNumber" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmShareholder.txtMobileNumber.$dirty && frmShareholder.txtMobileNumber.$error.required">Required</span>
+                    <label>Contact Number :</label> <input ng-class="frmShareholder.txtContactNumber.$invalid && frmShareholder.txtContactNumber.$dirty ? 'border-red' : ''" name="txtContactNumber"  id="txtContactNumber" ng-model="shareholder.ContactNumber" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmShareholder.txtContactNumber.$dirty && frmShareholder.txtContactNumber.$error.required">Required</span>
+                   <div class="row">
+                    
+                       <div class="col-lg-6">
+                           <label>Digital Signature :</label> <input type="file" fileread="shareholder.DigitalSignature" accept="image/*" ng-class="frmShareholder.txtDigitalSignature.$invalid && frmShareholder.txtDigitalSignature.$dirty ? 'border-red' : ''" name="txtDigitalSignature" id="txtDigitalSignature" ng-model="shareholder.DigitalSignature" class="form-control input-sm" required />
+                           <span class="text-danger right" ng-show="frmShareholder.txtDigitalSignature.$dirty && frmShareholder.txtDigitalSignature.$error.required">Required</span>
+                           <img id="imgShareholder" src="#" ng-src="{{shareholder.DigitalSignature}}" alt="Digital Signature" />
+                       </div>
+                       <div class="col-lg-6">
+                           <label>Total Shares :</label> <input ng-class="frmShareholder.txtTotalShares.$invalid && frmShareholder.txtTotalShares.$dirty ? 'border-red' : ''" name="txtTotalShares" id="txtTotalShares" ng-model="shareholder.TotalShares" class="form-control input-sm" required />
+                           <span class="text-danger right" ng-show="frmShareholder.txtTotalShares.$dirty && frmShareholder.txtTotalShares.$error.required">Required</span>
+                           <label>Address :</label> <textarea ng-class="frmShareholder.txtAddress.$invalid && frmShareholder.txtAddress.$dirty ? 'border-red' : ''" name="txtAddress" id="txtAddress" ng-model="shareholder.Address" class="form-control input-sm" required ></textarea>
+                           <span class="text-danger right" ng-show="frmShareholder.txtAddress.$dirty && frmShareholder.txtAddress.$error.required">Required</span>
+                           <label>Remarks :</label> <textarea id="txtShareholderRemarks" ng-model="shareholder.Remarks" class="input-sm form-control"></textarea>
+                       </div>
+                   </div>
+                   
+                    
+                    <!--<label>Authorised Capital :</label> <input ng-class="frmShareholder.txtAuthorisedCapital.$invalid && frmShareholder.txtAuthorisedCapital.$dirty ? 'border-red' : ''" name="txtAuthorisedCapital"  id="txtAuthorisedCapital" ng-model="shareholder.AuthorisedCapital" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmShareholder.txtAuthorisedCapital.$dirty && frmShareholder.txtAuthorisedCapital.$error.required">Required</span>
+                    <label>Total Capital :</label> <input ng-class="frmShareholder.txtTotalCapital.$invalid && frmShareholder.txtTotalCapital.$dirty ? 'border-red' : ''" name="txtTotalCapital"  id="txtTotalCapital" ng-model="shareholder.TotalCapital" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmShareholder.txtTotalCapital.$dirty && frmShareholder.txtTotalCapital.$error.required">Required</span>
+                    <label>Share Value :</label> <input ng-class="frmShareholder.txtShareValue.$invalid && frmShareholder.txtShareValue.$dirty ? 'border-red' : ''" name="txtShareValue"  id="txtShareValue" ng-model="shareholder.ShareValue" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmShareholder.txtShareValue.$dirty && frmShareholder.txtShareValue.$error.required">Required</span>
+                  
+                    <span class="text-danger right" ng-show="frmShareholder.txtEmployeeID.$dirty && frmShareholder.txtEmployeeID.$error.required">Required</span>
+                    <label>Issued Capital :</label> <input ng-class="frmShareholder.txtIssuedCapital.$invalid && frmShareholder.txtIssuedCapital.$dirty ? 'border-red' : ''" name="txtIssuedCapital"  id="txtIssuedCapital" ng-model="shareholder.IssuedCapital" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmShareholder.txtIssuedCapital.$dirty && frmShareholder.txtIssuedCapital.$error.required">Required</span>
+                    <label>Nomial Value :</label> <input ng-class="frmShareholder.txtNomialValue.$invalid && frmShareholder.txtNomialValue.$dirty ? 'border-red' : ''" name="txtNomialValue"  id="txtNomialValue" ng-model="shareholder.NomialValue" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmShareholder.txtNomialValue.$dirty && frmShareholder.txtNomialValue.$error.required">Required</span>-->
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreate" ng-click="createShareholder()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreate" ng-click="updateShareholder()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreate" ng-click="deleteShareholder()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  
+ 
+</div>
+  <!-- Modal -->
+<div id="mdlShareholderDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Confirm Delete Shareholder</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure to delete <b ng-bind="deleteShareholderName"></b> </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteShareholder()">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+        <!-- /page content -->
+    </div>
+</div>

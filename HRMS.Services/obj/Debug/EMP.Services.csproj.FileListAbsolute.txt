@@ -1,0 +1,7 @@
+C:\Projects\EMP\EMP.Services\bin\Debug\EMP.Services.dll
+C:\Projects\EMP\EMP.Services\bin\Debug\EMP.Services.pdb
+C:\Projects\EMP\EMP.Services\bin\Debug\EMP.Core.dll
+C:\Projects\EMP\EMP.Services\bin\Debug\EMP.Core.pdb
+C:\Projects\EMP\EMP.Services\obj\Debug\EMP.Services.csprojResolveAssemblyReference.cache
+C:\Projects\EMP\EMP.Services\obj\Debug\EMP.Services.dll
+C:\Projects\EMP\EMP.Services\obj\Debug\EMP.Services.pdb

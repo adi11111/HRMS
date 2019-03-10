@@ -1,0 +1,88 @@
+﻿body {
+}
+.has-feedback .form-control {
+    padding-right: 5.5px;
+}
+.hide_column {display:none;}
+div.dropdown > button {text-align:left !important;}
+.modal-body:after {display: table;content: '';clear: both;}
+.modal textarea {max-height:60px;max-width:568px;}
+table thead th:first-child , table tbody td:first-child {max-width:80px;}
+.inline {display:inline !important;}
+.inline-block {display:inline-block !important;}
+.checkbox-container {position: relative}
+.checkbox-container input[type=checkbox]  {position: absolute; opacity: 0;}
+.checkbox-container input[type=checkbox] + ins  {position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;}
+.checked {background-position: -22px;}
+.unchecked { background-position: 0 0;}
+.border-red {border:1px solid #a94442;}
+table tr td i {cursor:pointer;}
+
+span.stretch { display:inline-block; -webkit-transform:scale(2,1); /* Safari and Chrome */ -moz-transform:scale(2,1); /* Firefox */ -ms-transform:scale(2,1); /* IE 9 */ -o-transform:scale(2,1); /* Opera */ transform:scale(2,1); /* W3C */}
+.daterangepicker .monthselect , .daterangepicker .yearselect {color:black !important;}
+
+input[type=search] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #E6E9ED;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    background-image: url(./Images/searchicon.png);
+    background-position: 7px 5px;
+    background-repeat: no-repeat;
+    padding: 5px 20px 5px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=search]:focus {
+    width: 80%;
+}
+select { border: 2px solid #E6E9ED;padding:7px;}
+
+/* Attendence */
+
+
+/* Participant */
+
+.participant-list {border: 2px solid #2A3F54;padding: 10px;}
+.participant-list ul {    padding: 0px;}
+.participant-list ul li {display: inline-block;border: 1px solid #2A3F54;border-radius: 5px;padding: 2px 20px 2px 5px;position: relative;background-color: lightgray;margin: 1px;}
+.participant-list ul li > span {position:absolute;right:2px;cursor:pointer;}
+
+/* User Access */
+#tblUserAccess thead th:nth-child(-n+2) , #tblUserAccess tbody td:nth-child(-n+2) {width:350px}
+
+/* Employee */
+
+#mdlEmployee img  {    margin-top: 10px;max-width: 240px;max-height: 180px;min-width: 240px;min-height: 180px;}
+
+.emp-photo {text-align: center;}
+.emp-photo .lbl-photo {float: left;}
+.display-inline-block {display: inline-block;}
+#mdlEmployee .form-control:not(textarea) {    margin-bottom: 5px;margin-right: 5px;height:34px;}
+#mdlEmployee textarea {max-width:100%;}
+
+/* Company */
+
+#mdlCompany .form-control:not(textarea) {    margin-bottom: 5px;margin-right: 5px;height:34px;}
+#mdlCompany img {margin-top: 10px;max-width: 150px;max-height: 100px; min-width: 150px;min-height: 116px;margin-left: 55px;text-align: center;}
+
+/* Shareholder */
+
+#mdlShareholder img {min-height: 150px;min-width: 200px;margin-left: 35px;margin-top: 5px;max-width: 200px;max-height: 150px;text-align: center;}
+
+/* Document */
+
+.view-document {float: right;text-decoration: underline;color: darkblue;cursor: pointer;}
+
+
+
+/*!
+Author  : Hunter Perrin
+Version : 3.2.0
+Link    : http://sciactive.com/pnotify/
+*/.ui-pnotify{top:36px;right:36px;position:absolute;height:auto;z-index:2}body>.ui-pnotify{position:fixed;z-index:100040}.ui-pnotify-modal-overlay{background-color:rgba(0,0,0,.4);top:0;left:0;position:absolute;height:100%;width:100%;z-index:1}body>.ui-pnotify-modal-overlay{position:fixed;z-index:100039}.ui-pnotify.ui-pnotify-in{display:block!important}.ui-pnotify.ui-pnotify-move{transition:left .5s ease,top .5s ease,right .5s ease,bottom .5s ease}.ui-pnotify.ui-pnotify-fade-slow{transition:opacity .4s linear;opacity:0}.ui-pnotify.ui-pnotify-fade-slow.ui-pnotify.ui-pnotify-move{transition:opacity .4s linear,left .5s ease,top .5s ease,right .5s ease,bottom .5s ease}.ui-pnotify.ui-pnotify-fade-normal{transition:opacity .25s linear;opacity:0}.ui-pnotify.ui-pnotify-fade-normal.ui-pnotify.ui-pnotify-move{transition:opacity .25s linear,left .5s ease,top .5s ease,right .5s ease,bottom .5s ease}.ui-pnotify.ui-pnotify-fade-fast{transition:opacity .1s linear;opacity:0}.ui-pnotify.ui-pnotify-fade-fast.ui-pnotify.ui-pnotify-move{transition:opacity .1s linear,left .5s ease,top .5s ease,right .5s ease,bottom .5s ease}.ui-pnotify.ui-pnotify-fade-in{opacity:1}.ui-pnotify .ui-pnotify-shadow{-webkit-box-shadow:0 6px 28px 0 rgba(0,0,0,.1);-moz-box-shadow:0 6px 28px 0 rgba(0,0,0,.1);box-shadow:0 6px 28px 0 rgba(0,0,0,.1)}.ui-pnotify-container{background-position:0 0;padding:.8em;height:100%;margin:0}.ui-pnotify-container:after{content:" ";visibility:hidden;display:block;height:0;clear:both}.ui-pnotify-container.ui-pnotify-sharp{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}.ui-pnotify-title{display:block;margin-bottom:.4em;margin-top:0}.ui-pnotify-text{display:block}.ui-pnotify-icon,.ui-pnotify-icon span{display:block;float:left;margin-right:.2em}.ui-pnotify.stack-bottomleft,.ui-pnotify.stack-topleft{left:25px;right:auto}.ui-pnotify.stack-bottomleft,.ui-pnotify.stack-bottomright{bottom:25px;top:auto}.ui-pnotify.stack-modal{left:50%;right:auto;margin-left:-150px}
+.brighttheme{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}.brighttheme.ui-pnotify-container{padding:18px}.brighttheme .ui-pnotify-title{margin-bottom:12px}.brighttheme-notice{background-color:#ffffa2;border:0 solid #ff0;color:#4f4f00}.brighttheme-info{background-color:#8fcedd;border:0 solid #0286a5;color:#012831}.brighttheme-success{background-color:#aff29a;border:0 solid #35db00;color:#104300}.brighttheme-error{background-color:#ffaba2;background-image:repeating-linear-gradient(135deg,transparent,transparent 35px,rgba(255,255,255,.3) 35px,rgba(255,255,255,.3) 70px);border:0 solid #ff1800;color:#4f0800}.brighttheme-icon-closer,.brighttheme-icon-info,.brighttheme-icon-notice,.brighttheme-icon-sticker,.brighttheme-icon-success{position:relative;width:16px;height:16px;font-size:12px;font-weight:700;line-height:16px;font-family:"Courier New",Courier,monospace;border-radius:50%}.brighttheme-icon-closer:after,.brighttheme-icon-info:after,.brighttheme-icon-notice:after,.brighttheme-icon-sticker:after,.brighttheme-icon-success:after{position:absolute;top:0;left:4px}.brighttheme-icon-notice{background-color:#2e2e00;color:#ffffa2;margin-top:2px}.brighttheme-icon-notice:after{content:"!"}.brighttheme-icon-info{background-color:#012831;color:#8fcedd;margin-top:2px}.brighttheme-icon-info:after{content:"i"}.brighttheme-icon-success{background-color:#104300;color:#aff29a;margin-top:2px}.brighttheme-icon-success:after{content:"\002713"}.brighttheme-icon-error{position:relative;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:16px solid #2e0400;font-size:0;line-height:0;color:#ffaba2;margin-top:1px}.brighttheme-icon-error:after{position:absolute;top:1px;left:-4px;font-size:12px;font-weight:700;line-height:16px;font-family:"Courier New",Courier,monospace;content:"!"}.brighttheme-icon-closer,.brighttheme-icon-sticker{display:inline-block}.brighttheme-icon-closer:after{top:-4px;content:"\002715"}.brighttheme-icon-sticker:after{top:-5px;content:"\01D1BC";-moz-transform:rotate(-90deg);-webkit-transform:rotate(-90deg);-o-transform:rotate(-90deg);-ms-transform:rotate(-90deg);transform:rotate(-90deg)}.brighttheme-icon-sticker.brighttheme-icon-stuck:after{-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)}.brighttheme .ui-pnotify-action-bar{padding-top:12px}.brighttheme .ui-pnotify-action-bar input,.brighttheme .ui-pnotify-action-bar textarea{display:block;width:100%;margin-bottom:12px!important}.brighttheme .ui-pnotify-action-button{text-transform:uppercase;font-weight:700;padding:4px 8px;border:none;background:0 0}.brighttheme .ui-pnotify-action-button.btn-primary{border:none;border-radius:0}.brighttheme-notice .ui-pnotify-action-button.btn-primary{background-color:#ff0;color:#4f4f00}.brighttheme-info .ui-pnotify-action-button.btn-primary{background-color:#0286a5;color:#012831}.brighttheme-success .ui-pnotify-action-button.btn-primary{background-color:#35db00;color:#104300}.brighttheme-error .ui-pnotify-action-button.btn-primary{background-color:#ff1800;color:#4f0800}
+.ui-pnotify-closer,.ui-pnotify-sticker{float:right;margin-left:.2em}

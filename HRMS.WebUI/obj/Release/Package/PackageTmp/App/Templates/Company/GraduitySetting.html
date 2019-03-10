@@ -1,0 +1,164 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Gratuity Setting <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateGraduitySetting()" />
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblGraduitySetting" class="table  table-bordered table-responsive  jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Company</th>
+                                        <th>Year 1</th>
+                                        <th>Year 2</th>
+                                        <th>Year 3</th>
+                                        <th>Year 4</th>
+                                        <th>Year 5</th>
+                                        <th>Year Above 5</th>
+                                        <th>Grautuity Type</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlGraduitySetting" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Gratuity Setting</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmGraduitySetting">
+                    <input type="hidden" id="txtGraduitySettingId" ng-model="graduitySetting.GraduitySettingID" />
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                    
+                            <label>Company :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="graduitySetting.CompanyID" ng-class="frmGraduitySetting.txtCompanyID.$invalid && frmGraduitySetting.txtCompanyID.$dirty ? 'border-red' : ''" name="txtCompanyID" required>
+                                    <span id="txtSelectedCompanyName" ng-bind="selectedCompanyName"></span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Company" ng-model="companyy" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in companies | filter:companyy'>
+                                        <a href="javascript:void(0)" ng-click="setCompany(item.CompanyID,item.CompanyName)"> {{item.CompanyName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmGraduitySetting.txtCompanyID.$dirty && frmGraduitySetting.txtCompanyID.$error.required">Required</span>
+                       
+                            <label>Year 1 :</label> <input ng-class="frmGraduitySetting.txtYear1.$invalid && frmGraduitySetting.txtYear1.$dirty ? 'border-red' : ''" name="txtYear1" id="txtYear1" ng-model="graduitySetting.Year1" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmGraduitySetting.txtYear1.$dirty && frmGraduitySetting.txtYear1.$error.required">Required</span>
+                            <label>Year 2 :</label> <input ng-class="frmGraduitySetting.txtYear2.$invalid && frmGraduitySetting.txtYear2.$dirty ? 'border-red' : ''" name="txtYear2" id="txtYear2" ng-model="graduitySetting.Year2" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmGraduitySetting.txtYear2.$dirty && frmGraduitySetting.txtYear2.$error.required">Required</span>
+                            <label>Year 3 :</label> <input ng-class="frmGraduitySetting.txtYear3.$invalid && frmGraduitySetting.txtYear3.$dirty ? 'border-red' : ''" name="txtYear3" id="txtYear3" ng-model="graduitySetting.Year3" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmGraduitySetting.txtYear3.$dirty && frmGraduitySetting.txtYear3.$error.required">Required</span>
+                            <label>Year 4 :</label> <input ng-class="frmGraduitySetting.txtYear4.$invalid && frmGraduitySetting.txtYear4.$dirty ? 'border-red' : ''" name="txtYear4" id="txtYear4" ng-model="graduitySetting.Year4" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmGraduitySetting.txtYear4.$dirty && frmGraduitySetting.txtYear4.$error.required">Required</span>
+                            <label>Year 5 :</label> <input ng-class="frmGraduitySetting.txtYear5.$invalid && frmGraduitySetting.txtYear5.$dirty ? 'border-red' : ''" name="txtYear5" id="txtYear5" ng-model="graduitySetting.Year5" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmGraduitySetting.txtYear5.$dirty && frmGraduitySetting.txtYear5.$error.required">Required</span>
+                            <label>Year Above 5 :</label> <input ng-class="frmGraduitySetting.txtYearAbove5.$invalid && frmGraduitySetting.txtYearAbove5.$dirty ? 'border-red' : ''" name="txtYearAbove5" id="txtYearAbove5" ng-model="graduitySetting.YearAbove5" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmGraduitySetting.txtYearAbove5.$dirty && frmGraduitySetting.txtYearAbove5.$error.required">Required</span>
+                            <!--<label>Is Basic Only :</label> 
+                            <div class="icheckbox_flat-blue checkbox-container">
+                                <input type="checkbox" class="flat" />
+                                <ins class="iCheck-helper"></ins>
+                            </div>-->
+                            <label>Grauity Type :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="graduitySetting.GratuityType" ng-class="frmGraduitySetting.txtGrauityType.$invalid && frmGraduitySetting.txtGrauityType.$dirty ? 'border-red' : ''" name="txtGrauityType" required>
+                                    <span id="txtSelectedGratuityTypeyName" ng-bind="selectedGratuityTypeName"></span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Grauity Type" ng-model="grauityType" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" >
+                                        <a href="javascript:void(0)" ng-click="setGrauityType(1,'Basic')"> Basic </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="javascript:void(0)" ng-click="setGrauityType(2,'Full Salary')"> Full Salary </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="javascript:void(0)" ng-click="setGrauityType(3,'Gratuity Salary')"> Gratuity Salary </a>
+                                    </li>
+                                </ul>
+                            </div>
+                           <br />
+                            <label>Remarks :</label> <textarea id="txtGraduitySettingRemarks" ng-model="graduitySetting.Remarks" class="input-sm form-control"></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateGraduitySetting" ng-click="createGraduitySetting()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateGraduitySetting" ng-click="updateGraduitySetting()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreateGraduitySetting"ng-click="deleteGraduitySetting()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlGraduitySettingDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Graduity Setting</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteGraduitySetting()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

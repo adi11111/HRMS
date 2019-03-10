@@ -1,0 +1,158 @@
+﻿
+
+ <!-- page content -->
+
+<div class="right_col" role="main">
+
+    <div ng-show="adminRole" class="row tile_count">
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> {{home.Lable1Title}}</span>
+            <div class="count ">{{home.TotalEmployees}}</div>
+            <span class="count_bottom"><i class="green"> </i> {{home.Lable1SubTitle}}</span>
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-male"></i> {{home.Lable2Title}}</span>
+            <div class="count ">{{home.TotalMales}}</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{home.TotalMalesPercentage}} </i> {{home.Lable2SubTitle}}</span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-female"></i> {{home.Lable3Title}}</span>
+            <div class="count ">{{home.TotalFemales}}</div>
+            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>{{home.TotalFemalesPercentage}} </i> {{home.Lable3SubTitle}}</span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-bell"></i> {{home.Lable4Title}}</span>
+            <div class="count ">{{home.TotalLeaveApplied}}</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{home.TotalLeavesPercentage}} </i> {{home.Lable4SubTitle}}</span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-street-view"></i> {{home.Lable5Title}}</span>
+            <div class="count ">{{home.TotalActive}}</div>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{home.TotalActivePercentage}} </i> {{home.Lable5SubTitle}}</span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user-times"></i> {{home.Lable6Title}}</span>
+            <div class="count ">{{home.TotalInActive}}</div>
+            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>{{home.TotalInActivePercentage}} </i> {{home.Lable6SubTitle}}</span>
+        </div>
+
+    </div>
+
+    <div ng-hide="adminRole" class="row tile_count">
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user-times"></i> {{home.Lable1Title}}</span>
+            <div class="count ">{{home.TotalCurrentLeavesPending}}</div>
+            <span class="count_bottom"><i class="green"> </i> {{home.Lable1SubTitle}}</span>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> {{home.Lable2Title}}</span>
+            <div class="count ">{{home.TotalSickLeavesPending}}</div>
+           <!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i> {{home.TotalLeaveBalancePercentage}}</i> {{home.Lable2SubTitle}}</span>-->
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-male"></i> {{home.Lable3Title}}</span>
+            <div class="count ">{{home.TotalLeavesTaken}}</div>
+         <!--   <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{home.TotalDaysPresentPercentage}} </i> {{home.Lable3SubTitle}}</span>-->
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-female"></i> {{home.Lable4Title}}</span>
+            <div class="count ">{{home.TotalLeavesApplied}}</div>
+          <!--  <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>{{home.TotalDaysOnLeavePercentage}} </i> {{home.Lable4SubTitle}}</span>-->
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-bell"></i> {{home.Lable5Title}}</span>
+            <div class="count ">{{home.TotalDaysAbsent}}</div>
+          <!--  <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{home.TotalLeaveApprovedPercentage}} </i> {{home.Lable5SubTitle}}</span>-->
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+            <span class="count_top"><i class="fa fa-street-view"></i> {{home.Lable6Title}}</span>
+            <div class="count ">{{home.TotalGraduity}}</div>
+           <!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{home.TotalLeavePendingPercentage}} </i> {{home.Lable6SubTitle}}</span>-->
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>{{home.BranchTitle}} <small>{{home.BranchSubTitle}}</small></h2>
+                    <!--<ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>-->
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" style="line-height: 510px;height: 345px;">
+                    <canvas id="branchChart" style="height:350px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- pie chart -->
+        <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>{{home.LeaveTitle}} <small> {{home.LeaveSubTitle}}</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content2">
+                    <div id="leaveChart" style="height:350px;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- /Pie chart -->
+        <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Total Appointment <small> Current Year</small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <div id="appointmentGraph" style="height: 340px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: transparent;" _echarts_instance_="ec_1503465518915">
+                        <div style="position: relative; overflow: hidden; width: 485px; height: 370px; cursor: pointer;"><canvas width="485" height="370" data-zr-dom-id="zr_0" style="position: absolute; left: 0px; top: 0px; width: 485px; height: 370px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas></div>
+                        <div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), top 0.4s cubic-bezier(0.23, 1, 0.32, 1); background-color: rgba(0, 0, 0, 0.5); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; font-family: Arial, Verdana, sans-serif; line-height: 21px; padding: 5px; left: 135px; top: 142.5px;">May<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#26B99A"></span>2015 : 131,744<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#34495E"></span>2016 : 134,141</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Total Documents <small> Current Year </small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <div id="documentGraph" style="height: 340px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: transparent;" _echarts_instance_="ec_1503465518909"><div style="position: relative; overflow: hidden; width: 1036px; height: 350px; cursor: default;"><canvas width="1036" height="350" data-zr-dom-id="zr_0" style="position: absolute; left: 0px; top: 0px; width: 1036px; height: 350px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas></div><div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), top 0.4s cubic-bezier(0.23, 1, 0.32, 1); background-color: rgba(0, 0, 0, 0.5); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; font-family: Arial, Verdana, sans-serif; line-height: 21px; padding: 5px; left: 158.133px; top: 188px;">1?<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#26B99A"></span>sales : 2<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#34495E"></span>purchases : 2.6</div></div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+</div>
+

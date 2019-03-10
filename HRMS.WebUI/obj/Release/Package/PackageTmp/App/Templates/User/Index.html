@@ -1,0 +1,128 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>User <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateUser()" /> 
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblUser" class="table  table-bordered table-responsive jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>User Name</th>
+                                        <th>Password</th>
+                                        <th>Employee</th>
+                                        <th>User Role</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlUser" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">User</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmUser">
+                    <input type="hidden" id="txtUserId" ng-model="user.UserId" />
+                    
+                    <label>User Name :</label> <input ng-class="frmUser.txtUserName.$invalid && frmUser.txtUserName.$dirty ? 'border-red' : ''" name="txtUserName"  id="txtUserName" ng-model="user.UserName" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmUser.txtUserName.$dirty && frmUser.txtUserName.$error.required">Required</span>
+                    <label>Password :</label> <input ng-class="frmUser.txtPassword.$invalid && frmUser.txtPassword.$dirty ? 'border-red' : ''" name="txtPassword"  id="txtPassword" ng-model="user.Password" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmUser.txtPassword.$dirty && frmUser.txtPassword.$error.required">Required</span>
+                    <label>Employee :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtEmployeeID" data-toggle="dropdown" ng-class="frmUser.txtEmployeeID.$invalid && frmUser.txtEmployeeID.$dirty ? 'border-red' : ''" name="txtEmployeeID" ng-model="user.UserRoleID" required>
+                            <span id="txtselectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Employee" ng-model="emp" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in employees | filter:emp'>
+                                <a href="javascript:void(0)" ng-click="setEmployee(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmUser.txtEmployeeID.$dirty && frmUser.txtEmployeeID.$error.required">Required</span>
+                    <label>User Role :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtUserRoleID" data-toggle="dropdown" ng-class="frmUser.txtUserRoleID.$invalid && frmUser.txtUserRoleID.$dirty ? 'border-red' : ''" name="txtUserRoleID" ng-model="user.UserRoleID" required>
+                            <span id="txtselectedUserRoleName" ng-bind="selectedUserRoleName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="User Role" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in userRoles | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setUserRole(item.UserRoleID,item.RoleName)"> {{item.RoleName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmUser.txtUserRoleID.$dirty && frmUser.txtUserRoleID.$error.required">Required</span>
+                    <label>Remarks :</label> <textarea id="txtUserRemarks" ng-model="user.Remarks" class="input-sm form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateUser" ng-click="createUser()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateUser" ng-click="updateUser()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreateUser"ng-click="deleteUser()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="mdlUserDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete User</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteUser()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

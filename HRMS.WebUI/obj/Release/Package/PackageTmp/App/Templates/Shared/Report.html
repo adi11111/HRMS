@@ -1,0 +1,144 @@
+﻿<!-- page content -->
+
+<div class="right_col participant-container" role="main">
+
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2 id="reportName">  <small>Report</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="row">
+                            
+                        </div>
+
+                        <div class="row" style="min-height:80px;"   ng-form name="frmReport">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <label>Start Date :</label>
+                                <fieldset>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <div class="xdisplay_inputx has-feedback">
+                                                <input type="text" class="form-control has-feedback-left" ng-class="frmReport.txtStartDate.$invalid && frmReport.txtStartDate.$dirty ? 'border-red' : ''" name="txtStartDate" id="txtStartDate" placeholder="Start Date" ng-model="report.StartDate" aria-describedby="inputSuccess2Status3" datepicker required >
+                                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <span class="text-danger right" ng-show="frmReport.txtStartDate.$dirty && frmReport.txtStartDate.$error.required">Required</span>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>End Date :</label>
+                                <fieldset>
+                                    <div class="control-group">
+                                        <div class="controls">
+                                            <div class="xdisplay_inputx has-feedback">
+                                                <input type="text" class="form-control has-feedback-left" ng-class="frmReport.txtEndDate.$invalid && frmReport.txtEndDate.$dirty ? 'border-red' : ''" name="txtEndDate" id="txtEndDate" placeholder="End Date" ng-model="report.EndDate" aria-describedby="inputSuccess2Status3" datepicker required>
+                                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <span class="text-danger right" ng-show="frmReport.txtEndDate.$dirty && frmReport.txtEndDate.$error.required">Required</span>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Generate Report" ng-click="generateReport()" />
+                            </div>
+                        </div>
+                        <div class="row" ng-show="isPayslipReport">
+                            <div class="col-lg-12">
+                                <div id="gender" class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary" ng-click="selectCompany('On')" id="lblOn">
+                                        <input type="radio" name="company" value="on"> &nbsp; Company &nbsp;
+                                    </label>
+                                    <label class="btn btn-default" ng-click="selectCompany('Off')" id="lblOff">
+                                        <input type="radio" name="company" value="off"> Custom
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="min-height: 200px;">
+                            
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" ng-show="drpCompany">
+                               
+                                <label>Company :</label>
+                                <div class="dropdown dropdown-scroll">
+                                    <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmAttendenceBulk.txtCompanyID.$invalid && frmAttendenceBulk.txtCompanyID.$dirty ? 'border-red' : ''" name="txtCompanyID" ng-model="attendenceBulk.CompanyID" required>
+                                        <span id="txtSelectedCompanyName" ng-bind="selectedCompanyName"></span><span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation">
+                                            <div class="input-group input-group-sm search-control">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Company" ng-model="companyy" />
+                                            </div>
+                                        </li>
+                                        <li role="presentation" ng-repeat='item in companies | filter:companyy'>
+                                            <a href="javascript:void(0)" ng-click="setCompany(item.CompanyID,item.CompanyName)"> {{item.CompanyName}} </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" ng-show="isCustom">
+                                <label>Employee :</label>
+
+                                <div class="dropdown dropdown-scroll">
+                                    <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                        <span id="txtSelectedEmployeeName">Select the Employee</span><span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation">
+                                            <div class="input-group input-group-sm search-control">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Employee" ng-model="query" />
+                                            </div>
+                                        </li>
+                                        <li role="presentation" ng-repeat='item in bulkEmployees | filter:query'>
+
+                                            <a href="javascript:void(0)" ng-click="toggleParticipant(item.EmployeeID,item.EmployeeName,$event);$event.stopPropagation();">
+                                                <div class="icheckbox_flat-blue checkbox-container" data-employeeID="{{item.EmployeeID}}">
+                                                    <input type="checkbox" class="flat">
+                                                    <ins class="iCheck-helper"></ins>
+                                                </div>
+                                                {{item.EmployeeName}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" ng-show="isCustom">
+                                <div class="participant-list">
+                                    <label>Selected Participants</label>
+                                    <ul></ul>
+                                </div>
+
+                            </div>
+                      
+                                
+                            <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;margin-right: 15px;" value="Send Email" ng-show="isPayslipReport" ng-click="sendEmail()" />
+                  
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<!-- /page content -->

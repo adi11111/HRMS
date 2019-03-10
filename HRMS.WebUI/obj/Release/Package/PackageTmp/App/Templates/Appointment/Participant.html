@@ -1,0 +1,106 @@
+﻿<!-- page content -->
+
+<div class="right_col participant-container" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Participant <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                    <div class="row">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Update" ng-click="updateParticipant()" /> 
+                    </div>
+                    
+                        <div class="row" style="min-height: 200px;">
+                            <div class="col-lg-4">
+                                <label>Appointment :</label>
+
+                                <div class="dropdown dropdown-scroll">
+                                    <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                        <span id="txtSelectedAppointmentName" ng-bind="selectedAppointmentName"></span><span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation">
+                                            <div class="input-group input-group-sm search-control">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Appointment" ng-model="appointmentt" />
+                                            </div>
+                                        </li>
+                                        <li role="presentation" ng-repeat='item in appointments | filter:appointmentt'>
+                                            <a href="javascript:void(0)" ng-click="setAppointment(item.AppointmentID)"> {{item.AppointmentName}} - {{item.AppointmentDate}} - {{item.StartTime}} - {{item.EndTime}} </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Employee :</label>
+
+                                <div class="dropdown dropdown-scroll">
+                                    <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                        <span id="txtSelectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation">
+                                            <div class="input-group input-group-sm search-control">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Employee" ng-model="query" />
+                                            </div>
+                                        </li>
+                                        <li role="presentation" ng-repeat='item in employees | filter:query'>
+                                            
+                                             <a  href="javascript:void(0)" ng-click="toggleParticipant(item.EmployeeID,item.EmployeeName,$event);$event.stopPropagation();">
+                                                 <div class="icheckbox_flat-blue checkbox-container" data-employeeID="{{item.EmployeeID}}">
+                                                     <input type="checkbox" class="flat">
+                                                     <ins class="iCheck-helper"></ins>
+                                                 </div>
+                                              {{item.EmployeeName}} </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                            <div class="participant-list">
+                            <label>Selected Participants</label>
+                                <ul>
+                                    <!--<li onclick="this.parentNode.removeChild(this);">
+                                        <input type="hidden" name="ingredients[]" value="Cheese" />
+                                        Cheese
+                                    </li>
+                                    <li onclick="this.parentNode.removeChild(this);">
+                                        <input type="hidden" name="ingredients[]" value="Ham" />
+                                        Ham
+                                    </li>
+                                    <li onclick="this.parentNode.removeChild(this);">
+                                        <input type="hidden" name="ingredients[]" value="Mushrooms" />
+                                        Mushrooms
+                                    </li>-->
+                                </ul>
+                            </div>
+                                
+                            </div>
+                        </div>
+                       
+                        
+                        
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+  
+</div>
+
+<!-- /page content -->

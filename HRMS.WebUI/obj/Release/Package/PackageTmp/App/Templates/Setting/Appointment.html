@@ -1,0 +1,108 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main" ng-init="loadAppointments()">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Appointment <small>Setting</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Update" ng-click="updateSetting()" /> <div class="table-responsive col-lg-12">
+                        <table id="tblSetting" class="table  table-bordered table-responsive jambo_table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Appointment Name</th>
+                                    <th>IsPopUp Required</th>
+                                    <th>PopUp Days</th>
+                                    <th>IsEmail Required</th>
+                                    <th>Email Days</th>
+                                    <th>Interval</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <!--<div id="mdlSetting" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Setting</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="txtSettingId" ng-model="setting.SettingID" />
+                    <label>Appointment :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            <span id="txtSelectedAppointmentName" ng-bind="selectedAppointmentName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Appointment" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in appointments | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setAppointment(item.AppointmentID,item.AppointmentName)"> {{item.AppointmentName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <label>IsPopUp Required :</label> <input id="txtIsPopUpRequired" ng-model="setting.IsPopUpRequired" class="form-control input-sm" />
+                    <label>IsEmail Required :</label> <input id="txtIsEmailRequired" ng-model="setting.IsEmailRequired" class="form-control input-sm" />
+                    <label>PopUp Days :</label> <input id="txtPopUpDays" ng-model="setting.PopUpDays" class="form-control input-sm" />
+                    <label>Email Days :</label> <input id="txtEmailDays" ng-model="setting.EmailDays" class="form-control input-sm" />
+                    <label>Email :</label> <input id="txtEmail" ng-model="setting.Email" class="form-control input-sm" />
+                    <label>Remarks :</label> <textarea id="txtAppointmentRemarks" ng-model="setting.Remarks" class="input-sm form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-show="isCreateAppointment" ng-click="createSetting()">Create</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-hide="createAppointment" ng-click="updateSetting()">Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="createAppointment"ng-click="deleteAppointment()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="mdlSettingDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Setting</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteSetting()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+
+<!-- /page content -->

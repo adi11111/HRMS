@@ -1,0 +1,228 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Attendence <small>Management</small></h2>
+                        <div style="float: right;">
+                            <input type="file" class="form-control btn-info btn-sm" style="width: 250px;display:inline-block" fileread="attendenceFile" />
+                            <input type="button" class="form-control btn-info btn-sm" style="width: 150px;display:inline-block" value="Upload File" ng-click="uploadAttendence()" />
+                        </div>
+                        
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;" value="Bulk Attendence" ng-click="triggerBulkAttendence()" /> 
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateAttendence()" /> 
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblAttendence" class="table  table-bordered table-responsive  jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Attendence Date</th>
+                                        <th>Employee Name</th>
+                                        <th>Time In</th>
+                                        <th>Time Out</th>
+                                        <th>Attendence Status</th>
+                                        <th>Total Working Hours</th>
+                                        <th>Daily Working Hours</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlAttendence" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Attendence</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmAttendence">
+                    <input type="hidden" id="txtAttendenceId" ng-model="attendence.AttendenceID" />
+                    
+                    <label>Attendence Date :</label> <input ng-class="frmAttendence.txtAttendenceDate.$invalid && frmAttendence.txtAttendenceDate.$dirty ? 'border-red' : ''" name="txtAttendenceDate"  id="txtAttendenceDate" ng-disabled="isCreateAttendence == false" ng-model="attendence.AttendenceDate" class="form-control input-sm" ng-blur="dateChange()" datepicker required />
+                    <span class="text-danger right" ng-show="frmAttendence.txtAttendenceDate.$dirty && frmAttendence.txtAttendenceDate.$error.required">Required</span>
+                    <label>Employee Name :</label> <input id="txtEmployeeName" ng-hide="isCreateAttendence" disabled ng-model="selectedEmployeeName" class="form-control input-sm" required />
+                   
+                    <div class="dropdown dropdown-scroll" ng-show="isCreateAttendence" >
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmAttendence.txtEmployeeID.$invalid && frmAttendence.txtEmployeeID.$dirty ? 'border-red' : ''" name="txtEmployeeID" ng-model="attendence.EmployeeID"  required>
+                            <span id="txtSelectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Employee" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in employees | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setEmployee(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmAttendence.txtEmployeeID.$dirty && frmAttendence.txtEmployeeID.$error.required">Required</span>
+                    <label>Time In :</label> <input ng-class="frmAttendence.txtAttendenceTimeIn.$invalid && frmAttendence.txtAttendenceTimeIn.$dirty ? 'border-red' : ''" name="txtAttendenceTimeIn"  id="txtAttendenceTimeIn" ng-model="attendence.TimeIn" class="form-control input-sm" clockpicker  ng-change="timeChange()" onkeypress="return false;"  required />
+                    <span class="text-danger right" ng-show="frmAttendence.txtAttendenceTimeIn.$dirty && frmAttendence.txtAttendenceTimeIn.$error.required">Required</span>
+                    <label>Time Out :</label> <input ng-class="frmAttendence.txtAttendenceTimeOut.$invalid && frmAttendence.txtAttendenceTimeOut.$dirty ? 'border-red' : ''" name="txtAttendenceTimeOut"  id="txtAttendenceTimeOut" ng-model="attendence.TimeOut" class="form-control input-sm" clockpicker ng-change="timeChange()" onkeypress="return false;"   required />
+                    <span class="text-danger right" ng-show="frmAttendence.txtAttendenceTimeOut.$dirty && frmAttendence.txtAttendenceTimeOut.$error.required">Required</span>
+                    <label>Attendence Status :</label> <input id="txtAttendenceStatus" disabled ng-model="attendence.AttendenceStatus" class="form-control input-sm" />
+                   
+                    <label>Total Working Hours :</label> <input id="txtTotalWorkingHours" disabled ng-model="attendence.TotalWorkingHours" class="form-control input-sm" clockpicker onkeypress="return false;" />
+                    <label>Daily Working Hours :</label> <input id="txtDailyWorkingHours" disabled ng-model="attendence.DailyWorkingHours" class="form-control input-sm" clockpicker onkeypress="return false;" />
+                    <label>Remarks :</label> <textarea id="txtAttendenceRemarks" ng-model="attendence.Remarks" class="input-sm form-control" ></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateAttendence" ng-click="createAttendence()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateAttendence" ng-click="updateAttendence()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreateAttendence"ng-click="deleteAttendence()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlAttendenceDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Attendence</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" ng-click="deleteAttendence()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+            <!-- /page content -->
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlAttendenceBulk" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Attendence Bulk Upload</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmAttendenceBulk">
+
+                    <label>Month & Year :</label>
+
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmAttendenceBulk.txtMonthYear.$invalid && frmAttendenceBulk.txtMonthYear.$dirty ? 'border-red' : ''" name="txtMonthYear" ng-model="attendenceBulk.MonthYear" required>
+                            <span id="txtSelectedMonthYear" ng-bind="selectedMonthYear"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Month & Year" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in monthYears | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setMonthYear(item)"> {{item}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmAttendenceBulk.txtMonthYear.$dirty && frmAttendenceBulk.txtMonthYear.$error.required">Required</span>
+
+                    <label>Company :</label>
+
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmAttendenceBulk.txtCompanyID.$invalid && frmAttendenceBulk.txtCompanyID.$dirty ? 'border-red' : ''" name="txtCompanyID" ng-model="attendenceBulk.CompanyID" required>
+                            <span id="txtSelectedCompanyName" ng-bind="selectedCompanyName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Company" ng-model="companyy" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in companies | filter:companyy'>
+                                <a href="javascript:void(0)" ng-click="setCompany(item.CompanyID,item.CompanyName)"> {{item.CompanyName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmAttendenceBulk.txtCompanyID.$dirty && frmAttendenceBulk.txtCompanyID.$error.required">Required</span>
+
+                    <label>Employee Name :</label>
+
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmAttendenceBulk.txtEmployeeID.$invalid && frmAttendenceBulk.txtEmployeeID.$dirty ? 'border-red' : ''" name="txtEmployeeID" ng-model="attendenceBulk.EmployeeID" required>
+                            <span id="txtSelectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Employee" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in bulkEmployees | filter:query'>
+                                <a href="javascript:void(0)" ng-click="toggleParticipant(item.EmployeeID,item.EmployeeName,$event);$event.stopPropagation();">
+                                    <div class="icheckbox_flat-blue checkbox-container" data-employeeID="{{item.EmployeeID}}">
+                                        <input type="checkbox" class="flat">
+                                        <ins class="iCheck-helper"></ins>
+                                    </div>
+                                    {{item.EmployeeName}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmAttendenceBulk.txtEmployeeID.$dirty && frmAttendenceBulk.txtEmployeeID.$error.required">Required</span>
+                    <br /><br />
+                    <div class="participant-list">
+                        <label>Selected Participants</label>
+                        <ul>
+                        </ul>
+                   </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" ng-click="bulkAttendence('all')">All Employees</button>
+                        <button type="button" class="btn btn-primary" ng-click="bulkAttendence()">Selected Employees</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+                    </div>
+                </div>
+
+            <!-- /page content -->
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

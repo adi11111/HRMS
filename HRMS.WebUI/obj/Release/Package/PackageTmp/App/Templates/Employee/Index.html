@@ -1,0 +1,637 @@
+﻿<!-- page content -->
+<div class="right_col" role="main">
+
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Employees <small>Management</small></h2>
+                        <!--<ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>-->
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreate()" />
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblEmployee" class="table table-hover table-bordered jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Employee Name</th>
+                                        <th>Company</th>
+                                        <th>Nationality</th>
+                                        <th>Staff</th>
+                                        <th>Designation</th>
+                                        <th>Department</th>
+                                        <th>Account Type</th>
+                                        <th>Stift</th>
+                                        <th>Qualification Type</th>
+                                        <th>Qualification Description</th>
+                                        <th>Address</th>
+                                        <th>Region</th>
+                                        <th>Country</th>
+                                        <th>Phone Number</th>
+                                        <th>Mobile Number</th>
+                                        <th>Family Contact Number</th>
+                                        <th>Contact Person Name</th>
+                                        <!--<th>Contact Person Number</th>-->
+                                        <th>Contact Person Relationship</th>
+                                        <th>Gender</th>
+                                        <th>DOB</th>
+                                        <th>ActualDOB</th>
+                                        <th>Email</th>
+                                        <th>International Contact Number</th>
+                                        <th>Status</th>
+                                        <th>Medical History</th>
+                                        <th>MigratedLeave Balance</th>
+                                        <th>Migration Date</th>
+                                        <th>Leave Balance</th>
+                                        <th>Daily Leave</th>
+                                        <th>Bank</th>
+                                        <th>Account Number</th>
+                                        <th>Joining Date</th>
+                                        <th>Attendence Reference ID</th>
+                                        <th>Weekly Off</th>
+                                        <!--<th>Remarks</th>-->
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlEmployee" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Employee</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmEmployee">
+                    <input type="hidden" id="txtEmployeeId" data-ng-model="employee.EmployeeID" />
+                    <!--<input type="hidden" id="txtEmployeePhotoPath" ng-model="employee.PhotoPath" />-->
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label>Employee Name :</label> <input ng-class="frmEmployee.txtEmployeeName.$invalid && frmEmployee.txtEmployeeName.$dirty ? 'border-red' : ''" name="txtEmployeeName" id="txtEmployeeName" data-ng-model="employee.EmployeeName" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeName.$dirty && frmEmployee.txtEmployeeName.$error.required">Required</span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Reporting To :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.ReportingToID" ng-class="frmEmployee.txtReportToID.$invalid && frmEmployee.txtReportToID.$dirty ? 'border-red' : ''" name="txtReportToID" required>
+                                    <span id="txtSelectedReportingToName" ng-bind="selectedReportingToName"></span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Reporting To" ng-model="reporting" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in employees | filter:reporting'>
+                                        <a href="javascript:void(0)" ng-click="setReportingTo(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtReportToID.$dirty && frmEmployee.txtReportToID.$error.required">Required</span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Company :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.CompanyID" ng-class="frmEmployee.txtCompanyID.$invalid && frmEmployee.txtCompanyID.$dirty ? 'border-red' : ''" name="txtCompanyID" required>
+                                    <span id="txtSelectedCompanyName" ng-bind="selectedCompanyName"></span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Company" ng-model="companyy" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in companies | filter:companyy'>
+                                        <a href="javascript:void(0)" ng-click="setCompany(item.CompanyID,item.CompanyName)"> {{item.CompanyName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtCompanyID.$dirty && frmEmployee.txtCompanyID.$error.required">Required</span>
+                        </div>
+                    </div>
+                  
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label>Department :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.DepartmentID" ng-class="frmEmployee.txtDepartmentID.$invalid && frmEmployee.txtDepartmentID.$dirty ? 'border-red' : ''" name="txtDepartmentID" required>
+                                    <span id="txtSelectedDepartmentName" ng-bind="selectedDepartmentName"></span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Department" ng-model="query" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in departments | filter:query'>
+                                        <a href="javascript:void(0)" ng-click="setDepartment(item.DepartmentID,item.DepartmentName)"> {{item.DepartmentName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtDepartmentID.$dirty && frmEmployee.txtDepartmentID.$error.required">Required</span>
+                            <label>Shift :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.ShiftID" ng-class="frmEmployee.txtShiftID.$invalid && frmEmployee.txtShiftID.$dirty ? 'border-red' : ''" name="txtShiftID" required>
+                                    <span id="txtSelectedAccountTypeName" ng-bind="selectedShiftName"></span>  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Shift" ng-model="query" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in shifts | filter:query'>
+                                        <a href="javascript:void(0)" ng-click="setShift(item.ShiftID,item.ShiftName)"> {{item.ShiftName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtShiftID.$dirty && frmEmployee.txtShiftID.$error.required">Required</span>
+                            <label>Staff Type :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.StaffID" ng-class="frmEmployee.txtStaffID.$invalid && frmEmployee.txtStaffID.$dirty ? 'border-red' : ''" name="txtStaffID" required>
+                                    <span id="txtSelectedStaffName" ng-bind="selectedStaffName"></span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Staff" ng-model="query" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in staffs | filter:query'>
+                                        <a href="javascript:void(0)" ng-click="setStaff(item.StaffID,item.StaffName)"> {{item.StaffName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtStaffID.$dirty && frmEmployee.txtStaffID.$error.required">Required</span>
+                            <label>Nationality :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.NationalityID" ng-class="frmEmployee.txtNationalityID.$invalid && frmEmployee.txtNationalityID.$dirty ? 'border-red' : ''" name="txtNationalityID" required>
+                                    <span id="txtSelectedNationalityName" ng-bind="selectedNationalityName"></span>  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Nationality" ng-model="national" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in nationality | filter:national'>
+                                        <a href="javascript:void(0)" ng-click="setNationality(item.NationalityID,item.NationalityName)"> {{item.NationalityName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtNationalityID.$dirty && frmEmployee.txtNationalityID.$error.required">Required</span>
+                            <label>Bank :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.BankID" ng-class="frmEmployee.txtBankID.$invalid && frmEmployee.txtBankID.$dirty ? 'border-red' : ''" name="txtBankID" required>
+                                    <span id="txtSelectedBankName" ng-bind="selectedBankName"></span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Bank" ng-model="bankss" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in banks | filter:bankss'>
+                                        <a href="javascript:void(0)" ng-click="setBank(item.BankID,item.BankName)"> {{item.BankName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtBankID.$dirty && frmEmployee.txtBankID.$error.required">Required</span>
+                            <label>Region:</label>
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.RegionID" ng-class="frmEmployee.txtRegionID.$invalid && frmEmployee.txtRegionID.$dirty ? 'border-red' : ''" name="txtRegionID" required>
+                                    <span id="txtSelectedStatusName" ng-bind="selectedRegionName"></span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Region" ng-model="regionn" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in regions | filter:regionn'>
+                                        <a href="javascript:void(0)" ng-click="setRegion(item.RegionID,item.RegionName)"> {{item.RegionName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtRegionID.$dirty && frmEmployee.txtRegionID.$error.required">Required</span>
+                           
+                           
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Designation :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.DesignationID" ng-class="frmEmployee.txtDesignationID.$invalid && frmEmployee.txtDesignationID.$dirty ? 'border-red' : ''" name="txtDesignationID" required>
+                                    <span id="txtSelectedDesignationName" ng-bind="selectedDesignationName"></span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Designation" ng-model="query" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in designations | filter:query'>
+                                        <a href="javascript:void(0)" ng-click="setDesignation(item.DesignationID,item.DesignationName)"> {{item.DesignationName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtDesignationID.$dirty && frmEmployee.txtDesignationID.$error.required">Required</span>
+                          
+                            <label>Status :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.Status" ng-class="frmEmployee.txtEmployeeStatus.$invalid && frmEmployee.txtEmployeeStatus.$dirty ? 'border-red' : ''" name="txtEmployeeStatus" required>
+                                    <span id="txtSelectedStatusName" ng-bind="selectedStatusName"></span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Status" ng-model="status" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in statuss | filter:status'>
+                                        <a href="javascript:void(0)" ng-click="setStatus(item.StatusID,item.StatusName)"> {{item.StatusName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeStatus.$dirty && frmEmployee.txtEmployeeStatus.$error.required">Required</span>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>DOB :</label>
+                                    <fieldset>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <div class="xdisplay_inputx  has-feedback">
+                                                    <input type="text" class="form-control has-feedback-left" ng-class="frmEmployee.txtEmployeeDOB.$invalid && frmEmployee.txtEmployeeDOB.$dirty ? 'border-red' : ''" name="txtEmployeeDOB" id="txtEmployeeDOB" placeholder="DOB" ng-model="employee.DOB" ng-change="dobChange();" datepicker aria-describedby="inputSuccess2Status3" required>
+                                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                    <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <span class="text-danger right" ng-show="frmEmployee.txtEmployeeDOB.$dirty && frmEmployee.txtEmployeeDOB.$error.required">Required</span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Actual DOB :</label>
+                                    <fieldset>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <div class="xdisplay_inputx  has-feedback">
+                                                    <input type="text" class="form-control has-feedback-left" ng-class="frmEmployee.txtEmployeeActualDOB.$invalid && frmEmployee.txtEmployeeActualDOB.$dirty ? 'border-red' : ''" name="txtEmployeeActualDOB" id="txtEmployeeActualDOB" placeholder="Actual DOB" ng-model="employee.ActualDOB" ng-change="dobChange('actual');" datepicker aria-describedby="inputSuccess2Status3" required>
+                                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                    <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <span class="text-danger right" ng-show="frmEmployee.txtEmployeeActualDOB.$dirty && frmEmployee.txtEmployeeActualDOB.$error.required">Required</span>
+                                </div>
+                            </div>
+                            
+                            
+                            <label>Joining Date :</label>
+                            <fieldset>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <div class="xdisplay_inputx has-feedback">
+                                            <input type="text" class="form-control has-feedback-left" ng-class="frmEmployee.txtEmployeeJoiningDate.$invalid && frmEmployee.txtEmployeeJoiningDate.$dirty ? 'border-red' : ''" name="txtEmployeeJoiningDate" id="txtEmployeeJoiningDate" placeholder="Joining Date" ng-model="employee.JoiningDate" aria-describedby="inputSuccess2Status3" datepicker required>
+                                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                            <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeJoiningDate.$dirty && frmEmployee.txtEmployeeJoiningDate.$error.required">Required</span>
+                            <label>Account Type :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" data-toggle="dropdown" ng-model="employee.AccountTypeID" ng-class="frmEmployee.txtAccountTypeID.$invalid && frmEmployee.txtAccountTypeID.$dirty ? 'border-red' : ''" name="txtAccountTypeID" id="txtAccountTypeID" required>
+                                    <span id="txtSelectedAccountTypeName" ng-bind="selectedAccountTypeName"></span>  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="AccountType" ng-model="query" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in accountTypes | filter:query'>
+                                        <a href="javascript:void(0)" ng-click="setAccountType(item.AccountTypeID,item.AccountTypeName)"> {{item.AccountTypeName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtAccountTypeID.$dirty && frmEmployee.txtAccountTypeID.$error.required">Required</span>
+                            <label>Country: </label>
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.CountryID" ng-class="frmEmployee.txtCountryID.$invalid && frmEmployee.txtCountryID.$dirty ? 'border-red' : ''" name="txtCountryID" required>
+                                    <span id="txtSelectedStatusName" ng-bind="selectedCountryName"></span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Status" ng-model="countryy" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in countries | filter:countryy'>
+                                        <a href="javascript:void(0)" ng-click="setCountry(item.CountryID,item.CountryName)"> {{item.CountryName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtCountryID.$dirty && frmEmployee.txtCountryID.$error.required">Required</span>
+                        </div>
+                        <div class="col-lg-4 emp-photo">
+                            <label class="lbl-photo">Photo :</label>
+                            <input type="file" fileread="employee.PhotoPath" class="form-control input-sm is-image" id="filePhoto" accept="image/*" />
+                            <span class="text-danger right hide">Required</span>
+                            <img id="imgEmployee" src="#" ng-src="{{employee.PhotoPath}}" alt="Employee Photo" />
+                            <div class="text-left">
+                                <label>Account Number :</label> <input type="text" ng-class="frmEmployee.txtEmployeeAccountNumber.$invalid && frmEmployee.txtEmployeeAccountNumber.$dirty ? 'border-red' : ''" name="txtEmployeeAccountNumber" id="txtEmployeeAccountNumber" ng-model="employee.AccountNumber" class="input-sm form-control" required />
+                                <span class="text-danger right" ng-show="frmEmployee.txtEmployeeAccountNumber.$dirty && frmEmployee.txtEmployeeAccountNumber.$error.required">Required</span>
+                                <br />
+                                <label>Gender :</label>
+                                <!--<input type="text" id="txtEmployeeGender" ng-model="employee.Gender" class="input-sm form-control" />-->
+                                <div id="gender" class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary" ng-click="setGender('Male')" id="lblMale">
+                                        <input type="radio" name="gender"  value="male"> &nbsp; Male &nbsp;
+                                    </label>
+                                    <label class="btn btn-default" ng-click="setGender('Female')" id="lblFemale">
+                                        <input type="radio" name="gender" value="female"> Female
+                                    </label>
+                                </div>
+                                <!--<div>
+                                    Male <input type="radio" name="gender" ng-click="setGender('Male')" ng-checked="employee.Gender == 'Male'" class="radio display-inline-block" />
+                                    Female <input type="radio" name="gender" ng-click="setGender('Female')" ng-checked="employee.Gender == 'Female'" class="radio display-inline-block" />
+                                </div>-->
+                            
+
+                                <!--<input type="radio" name="group1" class="radio display-inline-block" />
+                                <input type="radio" name="group1" class="radio display-inline-block" />-->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                           
+
+                            <label>Qualification Type:</label>
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="employee.QualificationType" ng-class="frmEmployee.txtEmployeeQualificationType.$invalid && frmEmployee.txtEmployeeQualificationType.$dirty ? 'border-red' : ''" name="txtEmployeeQualificationType" required>
+                                    <span id="txtSelectedQualificationType" ng-bind="selectedQualificationType"></span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Qualification Type" ng-model="qualificationTypee" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in qualificationTypes | filter:qualificationTypee'>
+                                        <a href="javascript:void(0)" ng-click="setQualificationType(item)"> {{item}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeQualificationType.$dirty && frmEmployee.txtEmployeeQualificationType.$error.required">Required</span>
+                        </div>
+                        <div class="col-lg-4">
+                           
+                            <label>Attendence Reference ID:</label> <input type="number" ng-class="frmEmployee.txtAttendenceReferenceID.$invalid && frmEmployee.txtAttendenceReferenceID.$dirty ? 'border-red' : ''" name="txtAttendenceReferenceID" id="txtAttendenceReferenceID" ng-model="employee.AttendenceReferenceID" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtAttendenceReferenceID.$dirty && frmEmployee.txtAttendenceReferenceID.$error.required">Required</span>
+
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <label>Leave Eligibility(Daily):</label> <input ng-blur="leaveBalanceChange()" ng-class="frmEmployee.txtEmployeeDailyLeave.$invalid && frmEmployee.txtEmployeeDailyLeave.$dirty ? 'border-red' : ''" name="txtEmployeeDailyLeave" type="number" id="txtEmployeeDailyLeave" ng-model="employee.DailyLeave" class="input-sm form-control" required />
+                                    <span class="text-danger right" ng-show="frmEmployee.txtEmployeeDailyLeave.$dirty && frmEmployee.txtEmployeeDailyLeave.$error.required">Required</span>
+                                </div>
+                                <div class="col-lg-5">
+                                    <label>Weekly Off :</label> <input ng-class="frmEmployee.txtEmployeeWeeklyOff.$invalid && frmEmployee.txtEmployeeWeeklyOff.$dirty ? 'border-red' : ''" name="txtEmployeeWeeklyOff" type="number" id="txtEmployeeWeeklyOff" ng-model="employee.WeeklyOff" class="input-sm form-control" required />
+                                    <span class="text-danger right" ng-show="frmEmployee.txtEmployeeWeeklyOff.$dirty && frmEmployee.txtEmployeeWeeklyOff.$error.required">Required</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+
+                            <label>Leave Balance As Of Today :</label> <input disabled ng-class="frmEmployee.txtEmployeeLeaveBalanceAsNow.$invalid && frmEmployee.txtEmployeeLeaveBalance.$dirty ? 'border-red' : ''" name="txtEmployeeLeaveBalanceAsNow" type="number" id="txtEmployeeLeaveBalanceAsNow" ng-model="employee.LeaveBalanceAsNow" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeLeaveBalanceAsNow.$dirty && frmEmployee.txtEmployeeLeaveBalanceAsNow.$error.required">Required</span>
+                          
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Migrated Leave Balance :</label> <input ng-class="frmEmployee.txtEmployeeMigratedLeaveBalance.$invalid && frmEmployee.txtEmployeeMigratedLeaveBalance.$dirty ? 'border-red' : ''" name="txtEmployeeMigratedLeaveBalance" type="number" id="txtEmployeeMigratedLeaveBalance" ng-model="employee.MigratedLeaveBalance" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeMigratedLeaveBalance.$dirty && frmEmployee.txtEmployeeMigratedLeaveBalance.$error.required">Required</span>
+
+                          
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Migrated Date :</label>
+                            <fieldset>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <div class="xdisplay_inputx  has-feedback">
+                                            <input ng-change="leaveBalanceChange()" type="text" class="form-control has-feedback-left" ng-class="frmEmployee.txtEmployeeMigratedDate.$invalid && frmEmployee.txtEmployeeMigratedDate.$dirty ? 'border-red' : ''" name="txtEmployeeMigratedDate" id="txtEmployeeMigratedDate" placeholder="Migrated Date" ng-model="employee.MigratedDate" datepicker aria-describedby="inputSuccess2Status3" required>
+                                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                            <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeMigratedDate.$dirty && frmEmployee.txtEmployeeMigratedDate.$error.required">Required</span>
+                      
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <label>Qualification Description:</label>
+                            <textarea ng-class="frmEmployee.txtEmployeeQualificationDescription.$invalid && frmEmployee.txtEmployeeQualificationDescription.$dirty ? 'border-red' : ''" name="txtEmployeeQualificationDescription" id="txtAttendenceReferenceID" ng-model="employee.QualificationDescription" class="input-sm form-control" required></textarea>
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeQualificationDescription.$dirty && frmEmployee.txtEmployeeQualificationDescription.$error.required">Required</span>
+
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Email :</label> <input type="text" ng-class="frmEmployee.txtEmployeeEmail.$invalid && frmEmployee.txtEmployeeEmail.$dirty ? 'border-red' : ''" name="txtEmployeeEmail" id="txtEmployeeEmail" ng-model="employee.Email" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeEmail.$dirty && frmEmployee.txtEmployeeEmail.$error.required">Required</span>
+
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label style="width:100%;">Phone Number :</label> <input type="text" ng-class="frmEmployee.txtEmployeePhoneNumber.$invalid && frmEmployee.txtEmployeePhoneNumber.$dirty ? 'border-red' : ''" name="txtEmployeePhoneNumber" id="txtEmployeePhoneNumber" ng-model="employee.PhoneNumber" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeePhoneNumber.$dirty && frmEmployee.txtEmployeePhoneNumber.$error.required">Required</span>
+                           
+                            <label>Contact Person Name :</label> <input type="text" ng-class="frmEmployee.txtEmployeeContactPersonName.$invalid && frmEmployee.txtEmployeeContactPersonName.$dirty ? 'border-red' : ''" name="txtEmployeeContactPersonName" id="txtEmployeeContactPersonName" ng-model="employee.ContactPersonName" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeContactPersonName.$dirty && frmEmployee.txtEmployeeContactPersonName.$error.required">Required</span>
+                          
+                           
+                           
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Mobile Number :</label> <input type="text" ng-class="frmEmployee.txtEmployeeMobile.$invalid && frmEmployee.txtEmployeeMobile.$dirty ? 'border-red' : ''" name="txtEmployeeMobile" id="txtEmployeeMobile" ng-model="employee.MobileNumber" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeMobile.$dirty && frmEmployee.txtEmployeeMobile.$error.required">Required</span>
+                            <label>Family Contact Number :</label> <input type="text" ng-class="frmEmployee.txtEmployeeFamilyContactNumber.$invalid && frmEmployee.txtEmployeeFamilyContactNumber.$dirty ? 'border-red' : ''" name="txtEmployeeFamilyContactNumber" id="txtEmployeeFamilyContactNumber" ng-model="employee.FamilyContactNumber" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeFamilyContactNumber.$dirty && frmEmployee.txtEmployeeFamilyContactNumber.$error.required">Required</span>
+                           
+
+                            <!--<input type="text" ng-class="frmEmployee.txtEmployeeStatus.$invalid && frmEmployee.txtEmployeeStatus.$dirty ? 'border-red' : ''" name="txtEmployeeStatus"   id="txtEmployeeStatus" ng-model="employee.Status" class="input-sm form-control" required />-->
+                           
+                        </div>
+                        <div class="col-lg-4">
+                            <label>International Contact Number :</label> <input type="text" ng-class="frmEmployee.txtEmployeeInternaitonalContactNumber.$invalid && frmEmployee.txtEmployeeInternaitonalContactNumber.$dirty ? 'border-red' : ''" name="txtEmployeeInternaitonalContactNumber" id="txtEmployeeInternaitonalContactNumber" ng-model="employee.InternationalContactNumber" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeInternaitonalContactNumber.$dirty && frmEmployee.txtEmployeeInternaitonalContactNumber.$error.required">Required</span>
+                            <label>Contact Person Relationship :</label> <input type="text" ng-class="frmEmployee.txtEmployeeContactPersonRelationship.$invalid && frmEmployee.txtEmployeeContactPersonRelationship.$dirty ? 'border-red' : ''" name="txtEmployeeContactPersonRelationship" id="txtEmployeeContactPersonRelationship" ng-model="employee.ContactPersonRelationship" class="input-sm form-control" required />
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeContactPersonRelationship.$dirty && frmEmployee.txtEmployeeContactPersonRelationship.$error.required">Required</span>
+
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <!--<label>Contact Person Number :</label> <input type="text" id="txtEmployeeContactPersonNumber" ng-model="employee.ContactPersonNumber" class="input-sm form-control" />-->
+                    <!--<p>
+                        M:
+                        <div class="iradio_flat-green" style="position: relative;"><input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required="" data-parsley-multiple="gender" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> F:
+                        <div class="iradio_flat-green checked" style="position: relative;"><input type="radio" class="flat" name="gender" id="genderF" value="F" data-parsley-multiple="gender" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    </p>-->
+                    <!--<input type="text" id="txtEmployeeDOB" ng-model="employee.DOB" class="input-sm form-control" />-->
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label>Address :</label>
+                            <textarea ng-class="frmEmployee.txtEmployeeAddress.$invalid && frmEmployee.txtEmployeeAddress.$dirty ? 'border-red' : ''" name="txtEmployeeAddress" id="txtEmployeeAddress" ng-model="employee.Address" class="input-sm form-control" required></textarea>
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeAddress.$dirty && frmEmployee.txtEmployeeAddress.$error.required">Required</span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Medical History :</label>
+                            <textarea ng-class="frmEmployee.txtEmployeeMedicalHistory.$invalid && frmEmployee.txtEmployeeMedicalHistory.$dirty ? 'border-red' : ''" name="txtEmployeeMedicalHistory" id="txtEmployeeMedicalHistory" ng-model="employee.MedicalHistory" class="input-sm form-control" required></textarea>
+                            <span class="text-danger right" ng-show="frmEmployee.txtEmployeeMedicalHistory.$dirty && frmEmployee.txtEmployeeMedicalHistory.$error.required">Required</span>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Remarks :</label>
+                            <textarea id="txtEmployeeRemarks" ng-model="employee.Remarks" class="input-sm form-control"></textarea>
+                        </div>
+                    </div>
+                   
+                   
+                    <!--<input type="text" id="txtEmployeeMedicalHistory" ng-model="employee.MedicalHistory" class="input-sm form-control" />-->
+                    <!--<input type="text" id="txtEmployeeJoiningDate" ng-model="employee.JoiningDate" class="input-sm form-control" />-->
+                   
+                    <!--<input type="text" id="txtEmployeeRemarks" ng-model="employee.Remarks" class="input-sm form-control"   />-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreate" ng-click="createEmployee()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreate" ng-click="updateEmployee()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreate"ng-click="deleteEmployee()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlEmployeeDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Employee</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteEmployee()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+            <!-- /page content -->
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

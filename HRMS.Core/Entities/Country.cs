@@ -1,0 +1,34 @@
+﻿using HRMS.Core.Entities.Foundation;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace HRMS.Core.Entities
+{
+    public class  Country : BaseEntity
+    {
+        public Country() { }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CountryID { get; set; }
+        [Required]
+        [StringLength(70)]
+        public string CountryName { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string ShortForm { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string Currency { get; set; }
+        //[Required]
+        //public int CreatedByUserID { get; set; }
+        //public int UpdatedByUserID { get; set; }
+        //[Required]
+        //public DateTime CreatedDate { get; set; }
+        //public DateTime UpdatedDate { get; set; }
+        //[Required]
+        //public Boolean IsDeleted { get; set; }
+        //public string Remarks { get; set; }
+
+    }
+}

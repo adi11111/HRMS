@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0A6EB7B1-38D8-4A9D-8E64-ED9489E8ADD9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HRMS.Data</RootNamespace>
+    <AssemblyName>HRMS.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HRMSDbContext.cs" />
+    <Compile Include="Migrations\201708160518510_HRMSDbConnection.cs" />
+    <Compile Include="Migrations\201708160518510_HRMSDbConnection.Designer.cs">
+      <DependentUpon>201708160518510_HRMSDbConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709130843539_HRMSDbConnection1.cs" />
+    <Compile Include="Migrations\201709130843539_HRMSDbConnection1.Designer.cs">
+      <DependentUpon>201709130843539_HRMSDbConnection1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709131214262_HRMSDbConnection2.cs" />
+    <Compile Include="Migrations\201709131214262_HRMSDbConnection2.Designer.cs">
+      <DependentUpon>201709131214262_HRMSDbConnection2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709140919303_HRMSDbConnection3.cs" />
+    <Compile Include="Migrations\201709140919303_HRMSDbConnection3.Designer.cs">
+      <DependentUpon>201709140919303_HRMSDbConnection3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709190511021_HRMSDbConnection4.cs" />
+    <Compile Include="Migrations\201709190511021_HRMSDbConnection4.Designer.cs">
+      <DependentUpon>201709190511021_HRMSDbConnection4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709190513039_HRMSDbConnection5.cs" />
+    <Compile Include="Migrations\201709190513039_HRMSDbConnection5.Designer.cs">
+      <DependentUpon>201709190513039_HRMSDbConnection5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709190846312_HRMSDbConnection6.cs" />
+    <Compile Include="Migrations\201709190846312_HRMSDbConnection6.Designer.cs">
+      <DependentUpon>201709190846312_HRMSDbConnection6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709190848358_HRMSDbConnection7.cs" />
+    <Compile Include="Migrations\201709190848358_HRMSDbConnection7.Designer.cs">
+      <DependentUpon>201709190848358_HRMSDbConnection7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709190849222_HRMSDbConnection8.cs" />
+    <Compile Include="Migrations\201709190849222_HRMSDbConnection8.Designer.cs">
+      <DependentUpon>201709190849222_HRMSDbConnection8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709201037350_HRMSDbConnection9.cs" />
+    <Compile Include="Migrations\201709201037350_HRMSDbConnection9.Designer.cs">
+      <DependentUpon>201709201037350_HRMSDbConnection9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709240853561_HRMSDbConnection10.cs" />
+    <Compile Include="Migrations\201709240853561_HRMSDbConnection10.Designer.cs">
+      <DependentUpon>201709240853561_HRMSDbConnection10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709241143520_HRMSDbConnection11.cs" />
+    <Compile Include="Migrations\201709241143520_HRMSDbConnection11.Designer.cs">
+      <DependentUpon>201709241143520_HRMSDbConnection11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250517580_HRMSDbConnection12.cs" />
+    <Compile Include="Migrations\201709250517580_HRMSDbConnection12.Designer.cs">
+      <DependentUpon>201709250517580_HRMSDbConnection12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709251106356_HRMSDbConnection13.cs" />
+    <Compile Include="Migrations\201709251106356_HRMSDbConnection13.Designer.cs">
+      <DependentUpon>201709251106356_HRMSDbConnection13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710011215221_HRMSDbConnection14.cs" />
+    <Compile Include="Migrations\201710011215221_HRMSDbConnection14.Designer.cs">
+      <DependentUpon>201710011215221_HRMSDbConnection14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710021117413_HRMSDbConnecton.cs" />
+    <Compile Include="Migrations\201710021117413_HRMSDbConnecton.Designer.cs">
+      <DependentUpon>201710021117413_HRMSDbConnecton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710030616276_HRMSDbConnection15.cs" />
+    <Compile Include="Migrations\201710030616276_HRMSDbConnection15.Designer.cs">
+      <DependentUpon>201710030616276_HRMSDbConnection15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710041021051_HRMSDbConnection16.cs" />
+    <Compile Include="Migrations\201710041021051_HRMSDbConnection16.Designer.cs">
+      <DependentUpon>201710041021051_HRMSDbConnection16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710080832598_HRMSDbConnection17.cs" />
+    <Compile Include="Migrations\201710080832598_HRMSDbConnection17.Designer.cs">
+      <DependentUpon>201710080832598_HRMSDbConnection17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710100816047_HRMSDbConnection18.cs" />
+    <Compile Include="Migrations\201710100816047_HRMSDbConnection18.Designer.cs">
+      <DependentUpon>201710100816047_HRMSDbConnection18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710150620578_HRMSDbConnection19.cs" />
+    <Compile Include="Migrations\201710150620578_HRMSDbConnection19.Designer.cs">
+      <DependentUpon>201710150620578_HRMSDbConnection19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710150758483_HRMSDbConnection20.cs" />
+    <Compile Include="Migrations\201710150758483_HRMSDbConnection20.Designer.cs">
+      <DependentUpon>201710150758483_HRMSDbConnection20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711160753320_HRMSDbConnection21.cs" />
+    <Compile Include="Migrations\201711160753320_HRMSDbConnection21.Designer.cs">
+      <DependentUpon>201711160753320_HRMSDbConnection21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711161128503_HRMSDbConnection22.cs" />
+    <Compile Include="Migrations\201711161128503_HRMSDbConnection22.Designer.cs">
+      <DependentUpon>201711161128503_HRMSDbConnection22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802201247132_HRMSDbConnection23.cs" />
+    <Compile Include="Migrations\201802201247132_HRMSDbConnection23.Designer.cs">
+      <DependentUpon>201802201247132_HRMSDbConnection23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802210816062_HRMSDbConnection24.cs" />
+    <Compile Include="Migrations\201802210816062_HRMSDbConnection24.Designer.cs">
+      <DependentUpon>201802210816062_HRMSDbConnection24.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809180651499_HRMSDbConnection25.cs" />
+    <Compile Include="Migrations\201809180651499_HRMSDbConnection25.Designer.cs">
+      <DependentUpon>201809180651499_HRMSDbConnection25.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811260909003_HRMSDbConnection26.cs" />
+    <Compile Include="Migrations\201811260909003_HRMSDbConnection26.Designer.cs">
+      <DependentUpon>201811260909003_HRMSDbConnection26.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811280755115_HRMSDbConnection27.cs" />
+    <Compile Include="Migrations\201811280755115_HRMSDbConnection27.Designer.cs">
+      <DependentUpon>201811280755115_HRMSDbConnection27.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811290505197_HRMSDbConnection28.cs" />
+    <Compile Include="Migrations\201811290505197_HRMSDbConnection28.Designer.cs">
+      <DependentUpon>201811290505197_HRMSDbConnection28.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811290721387_HRMSDbConnection29.cs" />
+    <Compile Include="Migrations\201811290721387_HRMSDbConnection29.Designer.cs">
+      <DependentUpon>201811290721387_HRMSDbConnection29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812200754162_HRMSDbConnection30.cs" />
+    <Compile Include="Migrations\201812200754162_HRMSDbConnection30.Designer.cs">
+      <DependentUpon>201812200754162_HRMSDbConnection30.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AppointmentRepository.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Repositories\SettingRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HRMS.Core\HRMS.Core.csproj">
+      <Project>{c0205338-1474-46d0-9db0-64a3dd8fe83b}</Project>
+      <Name>HRMS.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708160518510_HRMSDbConnection.resx">
+      <DependentUpon>201708160518510_HRMSDbConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709130843539_HRMSDbConnection1.resx">
+      <DependentUpon>201709130843539_HRMSDbConnection1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709131214262_HRMSDbConnection2.resx">
+      <DependentUpon>201709131214262_HRMSDbConnection2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709140919303_HRMSDbConnection3.resx">
+      <DependentUpon>201709140919303_HRMSDbConnection3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709190511021_HRMSDbConnection4.resx">
+      <DependentUpon>201709190511021_HRMSDbConnection4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709190513039_HRMSDbConnection5.resx">
+      <DependentUpon>201709190513039_HRMSDbConnection5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709190846312_HRMSDbConnection6.resx">
+      <DependentUpon>201709190846312_HRMSDbConnection6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709190848358_HRMSDbConnection7.resx">
+      <DependentUpon>201709190848358_HRMSDbConnection7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709190849222_HRMSDbConnection8.resx">
+      <DependentUpon>201709190849222_HRMSDbConnection8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709201037350_HRMSDbConnection9.resx">
+      <DependentUpon>201709201037350_HRMSDbConnection9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709240853561_HRMSDbConnection10.resx">
+      <DependentUpon>201709240853561_HRMSDbConnection10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709241143520_HRMSDbConnection11.resx">
+      <DependentUpon>201709241143520_HRMSDbConnection11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250517580_HRMSDbConnection12.resx">
+      <DependentUpon>201709250517580_HRMSDbConnection12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709251106356_HRMSDbConnection13.resx">
+      <DependentUpon>201709251106356_HRMSDbConnection13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710011215221_HRMSDbConnection14.resx">
+      <DependentUpon>201710011215221_HRMSDbConnection14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710021117413_HRMSDbConnecton.resx">
+      <DependentUpon>201710021117413_HRMSDbConnecton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710030616276_HRMSDbConnection15.resx">
+      <DependentUpon>201710030616276_HRMSDbConnection15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041021051_HRMSDbConnection16.resx">
+      <DependentUpon>201710041021051_HRMSDbConnection16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710080832598_HRMSDbConnection17.resx">
+      <DependentUpon>201710080832598_HRMSDbConnection17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710100816047_HRMSDbConnection18.resx">
+      <DependentUpon>201710100816047_HRMSDbConnection18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150620578_HRMSDbConnection19.resx">
+      <DependentUpon>201710150620578_HRMSDbConnection19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710150758483_HRMSDbConnection20.resx">
+      <DependentUpon>201710150758483_HRMSDbConnection20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711160753320_HRMSDbConnection21.resx">
+      <DependentUpon>201711160753320_HRMSDbConnection21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711161128503_HRMSDbConnection22.resx">
+      <DependentUpon>201711161128503_HRMSDbConnection22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802201247132_HRMSDbConnection23.resx">
+      <DependentUpon>201802201247132_HRMSDbConnection23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802210816062_HRMSDbConnection24.resx">
+      <DependentUpon>201802210816062_HRMSDbConnection24.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809180651499_HRMSDbConnection25.resx">
+      <DependentUpon>201809180651499_HRMSDbConnection25.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811260909003_HRMSDbConnection26.resx">
+      <DependentUpon>201811260909003_HRMSDbConnection26.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811280755115_HRMSDbConnection27.resx">
+      <DependentUpon>201811280755115_HRMSDbConnection27.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811290505197_HRMSDbConnection28.resx">
+      <DependentUpon>201811290505197_HRMSDbConnection28.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811290721387_HRMSDbConnection29.resx">
+      <DependentUpon>201811290721387_HRMSDbConnection29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812200754162_HRMSDbConnection30.resx">
+      <DependentUpon>201812200754162_HRMSDbConnection30.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

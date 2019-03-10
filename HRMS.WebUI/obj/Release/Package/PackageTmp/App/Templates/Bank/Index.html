@@ -1,0 +1,137 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Bank <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreate()" />
+                         <div class="table-responsive col-lg-12">
+                                <table id="tblBank" class="table  table-bordered table-responsive  jambo_table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Action</th>
+                                            <th>Bank Name</th>
+                                            <th>Branch Name</th>
+                                            <th>Contact Person</th>
+                                            <th>Contact Person Number</th>
+                                            <th>Region</th>
+                                            <th>Location</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+</div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlBank" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Bank</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmBank">
+                    <input type="hidden" id="txtBankId" ng-model="bank.BankId" />
+                    
+                    <label>Bank Name :</label> <input ng-class="frmBank.txtBankName.$invalid && frmBank.txtBankName.$dirty ? 'border-red' : ''" name="txtBankName"  id="txtBankName" ng-model="bank.BankName" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmBank.txtBankName.$dirty && frmBank.txtBankName.$error.required">Required</span>
+                    <label>Branch Name :</label> <input ng-class="frmBank.txtBranchName.$invalid && frmBank.txtBranchName.$dirty ? 'border-red' : ''" name="txtBranchName"  id="txtBranchName" ng-model="bank.BranchName" class="form-control input-sm" />
+                    <span class="text-danger right" ng-show="frmBank.txtBranchName.$dirty && frmBank.txtBranchName.$error.required">Required</span>
+                    <label>Contact Person :</label> <input ng-class="frmBank.txtContactPerson.$invalid && frmBank.txtContactPerson.$dirty ? 'border-red' : ''" name="txtContactPerson"  id="txtContactPerson" ng-model="bank.ContactPerson" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmBank.txtContactPerson.$dirty && frmBank.txtContactPerson.$error.required">Required</span>
+                    <label>Contact Person Number :</label> <input ng-class="frmBank.txtBranchName.$invalid && frmBank.txtBranchName.$dirty ? 'border-red' : ''" name="txtBranchName"  id="txtBranchName" ng-model="bank.ContactNumber" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmBank.txtBranchName.$dirty && frmBank.txtBranchName.$error.required">Required</span>
+                    <label>Region :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtRegionID" data-toggle="dropdown" ng-class="frmBank.txtRegionID.$invalid && frmBank.txtRegionID.$dirty ? 'border-red' : ''" name="txtRegionID" ng-model="bank.RegionID" required  >
+                            <span id="txtSelectedRegionName" ng-bind="selectedRegionName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Region" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in regions | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setRegion(item.RegionID,item.RegionName)"> {{item.RegionName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmBank.txtRegionID.$dirty && frmBank.txtRegionID.$error.required">Required</span>
+                    <label>Location :</label>
+
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtLocationID" data-toggle="dropdown" ng-class="frmBank.txtLocationID.$invalid && frmBank.txtLocationID.$dirty ? 'border-red' : ''" name="txtLocationID" ng-model="bank.LocationID" required >
+                            <span id="txtSelectedStaffName" ng-bind="selectedLocationName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Location" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in locations | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setLocation(item.LocationID,item.LocationName)"> {{item.LocationName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmBank.txtLocationID.$dirty && frmBank.txtLocationID.$error.required">Required</span>
+                    <label>Remarks :</label> <textarea id="txtBankRemarks" ng-model="bank.Remarks" class="input-sm form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreate" ng-click="createBank()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreate" ng-click="updateBank()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreate"ng-click="deleteBank()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlBankDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Bank</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteBank()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

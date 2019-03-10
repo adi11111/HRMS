@@ -1,0 +1,5 @@
+C:\Projects\HRMS\HRMS.Models\bin\Release\HRMS.Models.dll
+C:\Projects\HRMS\HRMS.Models\bin\Release\HRMS.Models.pdb
+C:\Projects\HRMS\HRMS.Models\obj\Release\HRMS.Models.dll
+C:\Projects\HRMS\HRMS.Models\obj\Release\HRMS.Models.pdb
+C:\Projects\HRMS\HRMS.Models\obj\Release\HRMS.Models.csprojResolveAssemblyReference.cache

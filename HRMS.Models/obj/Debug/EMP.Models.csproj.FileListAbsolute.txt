@@ -1,0 +1,5 @@
+C:\Projects\EMP\EMP.Models\bin\Debug\EMP.Models.dll
+C:\Projects\EMP\EMP.Models\bin\Debug\EMP.Models.pdb
+C:\Projects\EMP\EMP.Models\obj\Debug\EMP.Models.csprojResolveAssemblyReference.cache
+C:\Projects\EMP\EMP.Models\obj\Debug\EMP.Models.dll
+C:\Projects\EMP\EMP.Models\obj\Debug\EMP.Models.pdb

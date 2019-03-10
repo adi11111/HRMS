@@ -1,0 +1,153 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main" >
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>User Access <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--<div class="x_content">
+
+                            <div class="col-xs-3">
+                              
+                                <ul class="nav nav-tabs tabs-left">
+
+                                    <li class="">
+                                        <a href="#home" data-toggle="tab" aria-expanded="false">Home</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#profile" data-toggle="tab" aria-expanded="false">Profile</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#messages" data-toggle="tab" aria-expanded="true">Messages</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#settings" data-toggle="tab" aria-expanded="false">Settings</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-xs-9">
+                                <div class="tab-content">
+
+                                    <ul>
+                                        <li ng-repeat="item in userRoles">
+                                            <input type="checkbox" ng-checked="item.checked"> {{item.Title}}
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                 
+                    </div>-->
+
+                    <div class="dropdown dropdown-scroll  col-lg-2">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            <span id="txtSelectedUserRoleName" ng-bind="selectedUserRoleName">User Role</span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="User Role" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in userRoles | filter:query'>
+                                <a href="javascript:void(0);" ng-click="setUserAccessByRole(item.UserRoleID,item.RoleName)"> {{item.RoleName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Update" ng-click="updateUserAccess()" /> 
+                    <div class="table-responsive col-lg-12">
+                        <table id="tblUserAccess" class="table table-striped table-bordered table-responsive  jambo_table">
+                            <thead>
+                                <tr>
+                                    <th>InterfaceID</th>
+                                    <th>Parent</th>
+                                    <th>Interface</th>
+                                    <!--<div class="icheckbox_flat-blue checkbox-container" data-employeeid="16"><input type="checkbox" class="flat"><ins class="iCheck-helper"></ins></div>-->
+                                    <th>
+                                        <div class="icheckbox_flat-blue checkbox-container" ng-click="switchChecked('chkAllowAddAll')"><input type="checkbox" id="chkAllowAddAll"  class="flat" /> <ins class="iCheck-helper"></ins></div> Allow Add
+                                    </th>
+                                    <th>
+                                         <div class="icheckbox_flat-blue checkbox-container" ng-click="switchChecked('chkAllowEditAll')"><input type="checkbox" id="chkAllowEditAll" class="flat" /> <ins class="iCheck-helper"></ins></div> Allow Edit
+                                    </th>
+                                    <th>
+                                        <div class="icheckbox_flat-blue checkbox-container" ng-click="switchChecked('chkAllowDeleteAll')"><input type="checkbox" id="chkAllowDeleteAll" class="flat" /> <ins class="iCheck-helper"></ins></div> Allow Delete
+                                    </th>
+                                    <th>
+                                        <div class="icheckbox_flat-blue checkbox-container" ng-click="switchChecked('chkAllowViewAll')"><input type="checkbox" id="chkAllowViewAll" class="flat" /> <ins class="iCheck-helper"></ins></div> Allow View
+                                    </th>
+                                    <th>
+                                        <div class="icheckbox_flat-blue checkbox-container" ng-click="switchChecked('chkAllowReportAll')"><input type="checkbox" id="chkAllowReportAll" class="flat" /> <ins class="iCheck-helper"></ins></div> Allow Report
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        </div>
+                    </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlUserRole" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">User Role</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="txtUserRoleId" data-ng-model="userRole.UserRoleId" />
+                    
+                    <label>User Role Name :</label> <input id="txtRoleName" data-ng-model="userRole.RoleName" class="form-control input-sm" />
+                    <label>Remarks :</label> <textarea id="txtUserRoleRemarks" ng-model="userRole.Remarks" class="input-sm form-control" ></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-show="isCreate" ng-click="createUserRole()">Create</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-hide="isCreate" ng-click="updateUserRole()">Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreate"ng-click="deleteUserRole()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="mdlUserRoleDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete User Role</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteUserRole()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

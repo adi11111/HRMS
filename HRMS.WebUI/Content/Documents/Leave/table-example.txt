@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>
+        practice table
+    </title>
+    <style>
+        ul li {
+            padding: 5px;
+            margin: 1px;
+        }
+
+        ul {
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body style="width:1000px;border:1px solid black;margin:auto;">
+    <table>
+        <tr>
+            <td style="width:100px;">
+                <img src="hhhvfhj.jpg" style="width:100%" />
+            </td>
+            <td style="width:100px">
+                <img src="hhhvfhj.jpg" style="width:100%" />
+            </td>
+            <td style="width:100px">
+                <img src="hhhvfhj.jpg" style="width:100%" />
+            </td>
+        </tr>
+        <tr>
+            <td style="border:1px solid black;">
+                <h1>Heading title</h1>
+                <p>a little description about the  image</p>
+            </td>
+            <td style="border:1px solid black;">
+                <h1>Heading title</h1>
+                <p>a little description about the  image</p>
+            </td>
+            <td style="border:1px solid black;">
+                <h1>Heading title</h1>
+                <p>a little description about the  image</p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

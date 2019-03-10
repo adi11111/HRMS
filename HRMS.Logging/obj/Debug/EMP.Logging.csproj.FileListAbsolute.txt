@@ -1,0 +1,5 @@
+C:\Projects\EMP\EMP.Logging\bin\Debug\EMP.Logging.dll
+C:\Projects\EMP\EMP.Logging\bin\Debug\EMP.Logging.pdb
+C:\Projects\EMP\EMP.Logging\obj\Debug\EMP.Logging.csprojResolveAssemblyReference.cache
+C:\Projects\EMP\EMP.Logging\obj\Debug\EMP.Logging.dll
+C:\Projects\EMP\EMP.Logging\obj\Debug\EMP.Logging.pdb

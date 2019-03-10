@@ -1,0 +1,85 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Deduction Type <small>Managment</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateDeductionType()" /> 
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblDeductionType" class="table table-striped table-bordered jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Deduction Type Name</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlDeductionType" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Deduction Type</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmDeductionType">
+                    <input type="hidden" id="txtDeductionTypeId" data-ng-model="deductionType.DeductionTypeID" />
+                    
+                    <label>Deduction Type Name :</label> <input   ng-class="frmDeductionType.txtDeductionTypeName.$invalid && frmDeductionType.txtDeductionTypeName.$dirty ? 'border-red' : ''" name="txtDeductionTypeName"  id="txtDeductionTypeName" data-ng-model="deductionType.DeductionTypeName" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmDeductionType.txtDeductionTypeName.$dirty && frmDeductionType.txtDeductionTypeName.$error.required">Required</span>
+                    <label>Remarks :</label> <textarea id="txtDeductionTypeRemarks" ng-model="deductionType.Remarks" class="input-sm form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateDeductionType" ng-click="createDeductionType();">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateDeductionType"  ng-click="updateDeductionType();">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreateDeductionType"ng-click="deleteDeductionType()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlDeductionTypeDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Dudecution Type</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteDeductionType()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

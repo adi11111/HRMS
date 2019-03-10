@@ -1,0 +1,110 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Shift <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateShift()" /> 
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblShift" class="table  table-bordered table-responsive  jambo_table table-striped" >
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Shift Name</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Break Start Time</th>
+                                        <th>Break End Time</th>
+                                        <th>Total Break Hours </th>
+                                        <th>Total Time</th>
+                                        <th>Total Working Hours</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlShift" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Shift</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmShift">
+                    <input type="hidden" id="txtShiftId" ng-model="shift.ShiftId" />
+                    <div class="col-lg-6">
+                        <label>Shift Name :</label> <input ng-class="frmShift.txtShiftName.$invalid && frmShift.txtShiftName.$dirty ? 'border-red' : ''" name="txtShiftName"  id="txtShiftName" ng-model="shift.ShiftName" class="form-control input-sm" required />
+                        <span class="text-danger right" ng-show="frmShift.txtShiftName.$dirty && frmShift.txtShiftName.$error.required">Required</span>
+                        <label>Start Time :</label> <input ng-class="frmShift.txtStartTime.$invalid && frmShift.txtStartTime.$dirty ? 'border-red' : ''" name="txtStartTime"   id="txtStartTime" clockpicker onkeypress="return false;" ng-model="shift.StartTime" class="form-control input-sm" required />
+                        <span class="text-danger right" ng-show="frmShift.txtStartTime.$dirty && frmShift.txtStartTime.$error.required">Required</span>
+                        <label>End Time :</label> <input ng-class="frmShift.txtEndTime.$invalid && frmShift.txtEndTime.$dirty ? 'border-red' : ''" name="txtEndTime"   id="txtEndTime" clockpicker onkeypress="return false;" ng-model="shift.EndTime" class="form-control input-sm clockpicker" required />
+                        <span class="text-danger right" ng-show="frmShift.txtEndTime.$dirty && frmShift.txtEndTime.$error.required">Required</span>
+                        <label>Total Time :</label> <input id="txtTotalTime" disabled onkeypress="return false;" ng-model="shift.TotalTime" class="form-control input-sm " />
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Break Start Time :</label> <input ng-class="frmShift.txtBreakStartTime.$invalid && frmShift.txtBreakStartTime.$dirty ? 'border-red' : ''" name="txtBreakStartTime"   id="txtBreakStartTime" clockpicker onkeypress="return false;" ng-model="shift.BreakStartTime" class="form-control input-sm " ng-change="shiftTimeChange()" required />
+                        <span class="text-danger right" ng-show="frmShift.txtBreakStartTime.$dirty && frmShift.txtBreakStartTime.$error.required">Required</span>
+                        <label>Break End Time :</label> <input ng-class="frmShift.txtBreakEndTime.$invalid && frmShift.txtBreakEndTime.$dirty ? 'border-red' : ''" name="txtBreakEndTime"   type="text" id="txtBreakEndTime" clockpicker onkeypress="return false;" ng-model="shift.BreakEndTime" class="input-sm form-control " ng-change="shiftTimeChange()" required />
+                        <span class="text-danger right" ng-show="frmShift.txtBreakEndTime.$dirty && frmShift.txtBreakEndTime.$error.required">Required</span>
+                        <label>Total Break Hours :</label> <input id="txtTotalBreakHours" disabled clockpicker onkeypress="return false;" ng-model="shift.TotalBreakHours" class="form-control input-sm " />
+                        <label>Total Working hours :</label> <input id="txtTotalWorkingHours" disabled clockpicker onkeypress="return false;" ng-model="shift.TotalWorkingHours" class="form-control input-sm " />
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <label>Remarks :</label> <textarea name="txtRemarks" id="txtRemarks" ng-model="shift.Remarks" class="form-control input-sm"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateShift" ng-click="createShift()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateShift" ng-click="updateShift()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreateShift"ng-click="deleteShift()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlShiftDelete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Shift</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteShift()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+            <!-- /page content -->
+        </div>
+    </div>
+</div>
+   
+<!-- /page content -->

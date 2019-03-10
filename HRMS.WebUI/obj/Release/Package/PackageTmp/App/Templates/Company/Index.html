@@ -1,0 +1,207 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Company <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateCompany()" /> 
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblCompany" class="table  table-bordered table-responsive  jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Company Name</th>
+                                        <th>Established By</th>
+                                        <th>Established Date</th>
+                                        <th>Assisted By</th>
+                                        <th>Total Capital</th>
+                                        <th>Total Shares</th>
+                                        <th>Initial Value</th>
+                                        <th>Current Value</th>
+                                        <th>Registration ID</th>
+                                        <th>Country</th>
+                                        <th>Company Type Name</th>
+                                        <th>Company Status</th>
+                                        <th>Currency</th>
+                                        <th>Address</th>
+                                        <th>Contact Person</th>
+                                        <th>Company Number</th>
+                                        <th>Mobile Number</th>
+                                        <th>Office Number</th>
+                                        <th>Logo</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                          </div>
+                        </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlCompany" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Company</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmCompany">
+                    <input type="hidden" id="txtCompanyId" ng-model="company.CompanyID" />
+                    
+                   
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label>Company Name :</label> <input ng-class="frmCompany.txtCompanyName.$invalid && frmCompany.txtCompanyName.$dirty ? 'border-red' : ''" name="txtCompanyName" id="txtCompanyName" ng-model="company.CompanyName" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtCompanyName.$dirty && frmCompany.txtCompanyName.$error.required">Required</span>
+                            <label>Registration ID :</label> <input ng-class="frmCompany.txtRegistrationID.$invalid && frmCompany.txtRegistrationID.$dirty ? 'border-red' : ''" name="txtRegistrationID" id="txtRegistrationID" ng-model="company.RegistrationID" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtRegistrationID.$dirty && frmCompany.txtRegistrationID.$error.required">Required</span>
+                            <label>Country :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" ng-model="company.CountryID" id="txtCountryID" data-toggle="dropdown" ng-class="frmCompany.txtCountryID.$invalid && frmCompany.txtCountryID.$dirty ? 'border-red' : ''" name="txtCountryID" required>
+                                    <span id="txtSelectedCompanyName" ng-bind="selectedCountryName"></span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Country" ng-model="countryy" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in countries | filter:countryy'>
+                                        <a href="javascript:void(0)" ng-click="setCountry(item.CountryID,item.CountryName)"> {{item.CountryName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmCompany.txtCountryID.$dirty && frmCompany.txtCountryID.$error.required">Required</span>
+                            <label>Company Type :</label>
+
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtCompanyTypeID" data-toggle="dropdown" ng-model="company.CompanyTypeID" ng-class="frmCompany.txtCompanyTypeID.$invalid && frmCompany.txtCompanyTypeID.$dirty ? 'border-red' : ''" name="txtCompanyTypeID" required>
+                                    <span id="txtSelectedCompanyTypeName" ng-bind="selectedCompanyTypeName"></span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Company Type" ng-model="type" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in companyTypes | filter:type'>
+                                        <a href="javascript:void(0)" ng-click="setCompanyType(item.CompanyTypeID,item.CompanyTypeName)"> {{item.CompanyTypeName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmCompany.txtCompanyTypeID.$dirty && frmCompany.txtCompanyTypeID.$error.required">Required</span>
+                            <label>Company Status :</label>
+                            <div class="dropdown dropdown-scroll">
+                                <button class="btn btn-default dropdown-toggle col-lg-12" ng-model="company.CompanyStatusID" type="button" id="txtCompanyStatusID" data-toggle="dropdown" ng-class="frmCompany.txtCompanyStatusID.$invalid && frmCompany.txtCompanyStatusID.$dirty ? 'border-red' : ''" name="txtCompanyStatusID" required>
+                                    <span id="txtSelectedCompanyTypeName" ng-bind="selectedCompanyStatusName"></span><span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li role="presentation">
+                                        <div class="input-group input-group-sm search-control">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Company Status" ng-model="status" />
+                                        </div>
+                                    </li>
+                                    <li role="presentation" ng-repeat='item in companyStatus | filter:status'>
+                                        <a href="javascript:void(0)" ng-click="setCompanyStatus(item.CompanyStatusID,item.CompanyStatusName)"> {{item.CompanyStatusName}} </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span class="text-danger right" ng-show="frmCompany.txtCompanyStatusID.$dirty && frmCompany.txtCompanyStatusID.$error.required">Required</span>
+                            <label>Currency :</label> <input ng-class="frmCompany.txtCurrency.$invalid && frmCompany.txtCurrency.$dirty ? 'border-red' : ''" name="txtCurrency" id="txtCurrency" ng-model="company.Currency" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtCurrency.$dirty && frmCompany.txtCurrency.$error.required">Required</span>
+                            <label>Contact Person :</label> <input ng-class="frmCompany.txtContactPerson.$invalid && frmCompany.txtContactPerson.$dirty ? 'border-red' : ''" name="txtContactPerson" id="txtContactPerson" ng-model="company.ContactPerson" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtContactPerson.$dirty && frmCompany.txtContactPerson.$error.required">Required</span>
+                            <label>Company Number :</label> <input ng-class="frmCompany.txtCompanyNumber.$invalid && frmCompany.txtCompanyNumber.$dirty ? 'border-red' : ''" name="txtCompanyNumber" id="txtCompanyNumber" ng-model="company.CompanyNumber" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtCompanyNumber.$dirty && frmCompany.txtCompanyNumber.$error.required">Required</span>
+                            <label>Mobile Number :</label> <input ng-class="frmCompany.txtMobileNumber.$invalid && frmCompany.txtMobileNumber.$dirty ? 'border-red' : ''" name="txtMobileNumber" id="txtMobileNumber" ng-model="company.MobileNumber" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtMobileNumber.$dirty && frmCompany.txtMobileNumber.$error.required">Required</span>
+                            <label>Office Number :</label> <input ng-class="frmCompany.txtOfficeNumber.$invalid && frmCompany.txtOfficeNumber.$dirty ? 'border-red' : ''" name="txtOfficeNumber" id="txtOfficeNumber" ng-model="company.OfficeNumber" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtOfficeNumber.$dirty && frmCompany.txtOfficeNumber.$error.required">Required</span>
+                            <label>Address :</label> <textarea ng-class="frmCompany.txtAddress.$invalid && frmCompany.txtAddress.$dirty ? 'border-red' : ''" name="txtAddress" id="txtAddress" ng-model="company.Address" class="form-control input-sm" required></textarea>
+                            <span class="text-danger right" ng-show="frmCompany.txtAddress.$dirty && frmCompany.txtAddress.$error.required">Required</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="lbl-photo">Logo :</label>
+                            <input type="file" fileread="company.Logo" class="form-control input-sm is-image" id="filePhoto" accept="image/*" />
+                            <span class="text-danger right hide">Required</span>
+                            <img id="imgCompany" class="img-preview" src="#" ng-src="{{company.Logo}}" alt="Company Logo" />
+                            <label>Established By :</label> <input ng-class="frmCompany.txtEstablishedBy.$invalid && frmCompany.txtEstablishedBy.$dirty ? 'border-red' : ''" name="txtEstablishedBy" id="txtEstablishedBy" ng-model="company.EstablishedBy" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtEstablishedBy.$dirty && frmCompany.txtEstablishedBy.$error.required">Required</span>
+                            <label>Establishment Date :</label> <input datepicker ng-class="frmCompany.txtEstablishmentDate.$invalid && frmCompany.txtEstablishmentDate.$dirty ? 'border-red' : ''" name="txtEstablishmentDate" id="txtEstablishmentDate" ng-model="company.EstablishmentDate" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtEstablishmentDate.$dirty && frmCompany.txtEstablishmentDate.$error.required">Required</span>
+                            <label>Assisted By :</label> <input ng-class="frmCompany.txtAssistedBy.$invalid && frmCompany.txtAssistedBy.$dirty ? 'border-red' : ''" name="txtAssistedBy" id="txtAssistedBy" ng-model="company.AssistedBy" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtAssistedBy.$dirty && frmCompany.txtAssistedBy.$error.required">Required</span>
+                            <label>Total Capital :</label><input ng-class="frmCompany.txtTotalCapital.$invalid && frmCompany.txtTotalCapital.$dirty ? 'border-red' : ''" name="txtTotalCapital" id="txtTotalCapital" ng-model="company.TotalCapital" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtTotalCapital.$dirty && frmCompany.txtTotalCapital.$error.required">Required</span>
+                            <label>Total Shares :</label> <input ng-class="frmCompany.txtTotalShares.$invalid && frmCompany.txtTotalShares.$dirty ? 'border-red' : ''" name="txtTotalShares" id="txtTotalShares" ng-model="company.TotalShares" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtTotalShares.$dirty && frmCompany.txtTotalShares.$error.required">Required</span>
+                            <label>Initial Value :</label> <input ng-class="frmCompany.txtInitialValue.$invalid && frmCompany.txtInitialValue.$dirty ? 'border-red' : ''" name="txtInitialValue" id="txtInitialValue" ng-model="company.InitialValue" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtInitialValue.$dirty && frmCompany.txtInitialValue.$error.required">Required</span>
+                            <label>Current Value :</label> <input ng-class="frmCompany.txtCurrentValue.$invalid && frmCompany.txtCurrentValue.$dirty ? 'border-red' : ''" name="txtCurrentValue" id="txtCurrentValue" ng-model="company.CurrentValue" class="form-control input-sm" required />
+                            <span class="text-danger right" ng-show="frmCompany.txtCurrentValue.$dirty && frmCompany.txtCurrentValue.$error.required">Required</span>
+                            <label>Remarks :</label> <textarea id="txtCompanyRemarks" ng-model="company.Remarks" class="input-sm form-control"></textarea>
+                           
+                        </div>
+                    </div>
+                   
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateCompany" ng-click="createCompany()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateCompany" ng-click="updateCompany()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreateCompany"ng-click="deleteCompany()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlCompanyDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Company</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteCompany()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

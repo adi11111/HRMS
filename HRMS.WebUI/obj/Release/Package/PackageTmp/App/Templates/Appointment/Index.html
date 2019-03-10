@@ -1,0 +1,182 @@
+﻿ <!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Appointment <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreate()" />
+                        <table id="tblAppointment" class="table table-striped table-bordered  jambo_table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Appointment Name</th>
+                                    <th>Description</th>
+                                    <th>Appointment Date</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Company Name</th>
+                                    <th>Initiated By</th>
+                                    
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlAppointment" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Appointment</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmAppointment">
+                    <input type="hidden" id="txtAppointmentId" ng-model="appointment.AppointmentID" />
+                    
+                    <label>Appointment Name :</label> <input ng-class="frmAppointment.txtAppointmentName.$invalid && frmAppointment.txtAppointmentName.$dirty ? 'border-red' : ''" name="txtAppointmentName"  id="txtAppointmentName" ng-model="appointment.AppointmentName" class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmAppointment.txtAppointmentName.$dirty && frmAppointment.txtAppointmentName.$error.required">Required</span>
+                    <label>Description :</label> <textarea ng-class="frmAppointment.txtAppointmentRemarks.$invalid && frmAppointment.txtAppointmentRemarks.$dirty ? 'border-red' : ''" id="txtAppointmentRemarks" name="txtAppointmentRemarks" ng-model="appointment.Remarks" class="input-sm form-control" required></textarea>
+                    <span class="text-danger right" ng-show="frmAppointment.txtAppointmentRemarks.$dirty && frmAppointment.txtAppointmentRemarks.$error.required">Required</span>
+                    <label>Appointment Date :</label>
+                    <fieldset>
+                        <div class="control-group">
+                            <div class="controls">
+                                <div class="xdisplay_inputx  has-feedback">
+                                    <input ng-class="frmAppointment.txtAppointmentDate.$invalid && frmAppointment.txtAppointmentDate.$dirty ? 'border-red' : ''" name="txtAppointmentDate"  type="text" class="form-control has-feedback-left" id="txtAppointmentDate" datepicker placeholder="Appointment Date" ng-model="appointment.AppointmentDate" aria-describedby="inputSuccess2Status3" required ng-change="dateChange();">
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                    <span class="text-danger right" ng-show="frmAppointment.txtAppointmentDate.$dirty && frmAppointment.txtAppointmentDate.$error.required">Required</span>
+
+                    <label>Start Time :</label>
+                    <fieldset>
+                        <div class="control-group">
+                            <div class="controls">
+                                <div class="xdisplay_inputx  has-feedback">
+                                    <input ng-class="frmAppointment.txtStartTime.$invalid && frmAppointment.txtStartTime.$dirty ? 'border-red' : ''" name="txtStartTime" type="text" class="form-control has-feedback-left" id="txtAppointmentStartTime" clockpicker placeholder="Start Time" ng-model="appointment.StartTime" aria-describedby="inputSuccess2Status3" required ng-change="timeChange();">
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <span class="text-danger right" ng-show="frmAppointment.txtStartTime.$dirty && frmAppointment.txtStartTime.$error.required">Required</span>
+
+                    <label>End Time :</label>
+                    <fieldset>
+                        <div class="control-group">
+                            <div class="controls">
+                                <div class="xdisplay_inputx  has-feedback">
+                                    <input ng-class="frmAppointment.txtEndTime.$invalid && frmAppointment.txtEndTime.$dirty ? 'border-red' : ''" name="txtEndTime" type="text" class="form-control has-feedback-left" id="txtAppointmentEndTime" clockpicker placeholder="End Time" ng-model="appointment.EndTime" aria-describedby="inputSuccess2Status3" required ng-change="timeChange();">
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                    <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <span class="text-danger right" ng-show="frmAppointment.txtEndTime.$dirty && frmAppointment.txtEndTime.$error.required">Required</span>
+                     <!--<input id="txtAppointmentDate" ng-model="appointment.AppointmentDate" class="form-control input-sm" />-->
+                    <label>Company :</label>
+
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmAppointment.txtCompanyID.$invalid && frmAppointment.txtCompanyID.$dirty ? 'border-red' : ''" name="txtCompanyID" ng-model="appointment.CompanyID" required >
+                            <span id="txtSelectedCompanyName" ng-bind="selectedCompanyName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Company" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in companies | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setCompany(item.CompanyID,item.CompanyName)"> {{item.CompanyName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmAppointment.txtCompanyID.$dirty && frmAppointment.txtCompanyID.$error.required">Required</span>
+                    
+                    <label>Initiated By :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmAppointment.txtEmployeeID.$invalid && frmAppointment.txtEmployeeID.$dirty ? 'border-red' : ''" name="txtEmployeeID" ng-model="appointment.EmployeeID"  required>
+                            <span id="txtSelectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Employee" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in employees | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setEmployee(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmAppointment.txtEmployeeID.$dirty && frmAppointment.txtEmployeeID.$error.required">Required</span>
+                    <div ng-hide="isCreate">
+                        <label>Conclusion :</label> <textarea ng-model="appointment.Conclusion" class="input-sm form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreate" ng-click="createAppointment()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreate" ng-click="updateAppointment()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreate"ng-click="deleteAppointment()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlAppointmentDelete" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Appointment</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteAppointment()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+            <!-- /page content -->
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

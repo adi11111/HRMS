@@ -1,0 +1,145 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+   
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Increment <small>Management</small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width: 150px;float: right;" value="Create" ng-click="triggerCreateIncrement()" /> 
+                        <div class="table-responsive col-lg-12">
+                            <table id="tblIncrement" class="table  table-bordered table-responsive jambo_table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>IncrementID</th>
+                                        <th>Employee</th>
+                                        <th>Increment Date</th>
+                                        <th>Basic</th>
+                                        <th>Telephone</th>
+                                        <th>Housing</th>
+                                        <th>Transport</th>
+                                        <th>Total Increment</th>
+                                        <th>Other (Allowance Type)</th>
+                                        <th>Other (Amount)</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="mdlIncrement" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Increment</h4>
+                </div>
+                <div class="modal-body" ng-form name="frmIncrement">
+                    <input type="hidden" id="txtIncrementId" ng-model="increment.IncrementID" />
+                    
+                    <label>Employee Name :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtEmployeeID" data-toggle="dropdown" ng-model="increment.EmployeeID"  ng-class="frmIncrement.txtEmployeeID.$invalid && frmIncrement.txtEmployeeID.$dirty ? 'border-red' : ''" name="txtEmployeeID"   required >
+                            <span id="txtSelectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Employee" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in employees | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setEmployee(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="text-danger right" ng-show="frmIncrement.txtEmployeeID.$dirty && frmIncrement.txtEmployeeID.$error.required">Required</span>
+                    <label>Date :</label> <input ng-class="frmIncrement.txtIncrementDate.$invalid && frmIncrement.txtIncrementDate.$dirty ? 'border-red' : ''" name="txtIncrementDate"  id="txtIncrementDate" ng-model="increment.IncrementDate" datepicker class="form-control input-sm" required />
+                    <span class="text-danger right" ng-show="frmIncrement.txtIncrementDate.$dirty && frmIncrement.txtIncrementDate.$error.required">Required</span>
+                    <label>Basic :</label> <input ng-class="frmIncrement.txtBasic.$invalid && frmIncrement.txtBasic.$dirty ? 'border-red' : ''" name="txtBasic"  type="number" id="txtBasic" ng-model="increment.Basic" class="form-control input-sm" required  ng-change="incrementChange();" />
+                    <span class="text-danger right" ng-show="frmIncrement.txtBasic.$dirty && frmIncrement.txtBasic.$error.required">Required</span>
+                    <label>Telephone :</label> <input ng-class="frmIncrement.txtTelephone.$invalid && frmIncrement.txtTelephone.$dirty ? 'border-red' : ''" name="txtTelephone"  type="number" id="txtTelephone" ng-model="increment.Telephone" class="form-control input-sm"  required  ng-change="incrementChange();" />
+                    <span class="text-danger right" ng-show="frmIncrement.txtTelephone.$dirty && frmIncrement.txtTelephone.$error.required">Required</span>
+                    <label>Housing :</label> <input ng-class="frmIncrement.txtHousing.$invalid && frmIncrement.txtHousing.$dirty ? 'border-red' : ''" name="txtHousing"  type="number" id="txtHousing" ng-model="increment.Housing" class="form-control input-sm" required  ng-change="incrementChange();" />
+                    <span class="text-danger right" ng-show="frmIncrement.txtHousing.$dirty && frmIncrement.txtHousing.$error.required">Required</span>
+                    <label>Transport :</label> <input ng-class="frmIncrement.txtTransport.$invalid && frmIncrement.txtTransport.$dirty ? 'border-red' : ''" name="txtTransport"  type="number" id="txtTransport " ng-model="increment.Transport " class="form-control input-sm" required  ng-change="incrementChange();" />
+                    <span class="text-danger right" ng-show="frmIncrement.txtTransport.$dirty && frmIncrement.txtTransport.$error.required">Required</span>
+                   
+                    <label>Other (Allowance Type)  :</label> 
+                     <input ng-model="increment.OtherText " disabled class="form-control input-sm" />
+                    <!--<div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="txtOtherText" data-toggle="dropdown" ng-model="increment.OtherText" ng-class="frmIncrement.txtOtherText.$invalid && frmIncrement.txtOtherText.$dirty ? 'border-red' : ''" name="txtOtherText" required>
+                            <span id="txtSelectedOtherTextName" ng-bind="selectedOtherTextName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Allowance Type" ng-model="other" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in otherTexts | filter:other'>
+                                <a href="javascript:void(0)" ng-click="setOtherText(item)"> {{item}} </a>
+                            </li>
+                        </ul>
+                    </div>-->
+                    <label>Other (Amount) :</label> <input ng-change="incrementChange();" type="number" id="txtOtherNumber " ng-model="increment.OtherNumber " class="form-control input-sm" />
+                    <label>Total Increment :</label> <input type="number" id="txtTotalIncrement " ng-model="increment.TotalSalary " class="form-control input-sm" disabled />
+                    <span class="text-danger right" ng-show="frmIncrement.txtTransport.$dirty && frmIncrement.txtTransport.$error.required">Required</span>
+                    <label>Remarks :</label> <textarea id="txtIncrementRemarks" ng-model="increment.Remarks" class="input-sm form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-show="isCreateIncrement" ng-click="createIncrement()">Create</button>
+                    <button type="button" class="btn btn-primary" ng-hide="isCreateIncrement" ng-click="updateIncrement()">Update</button>
+                    <!--<button type="button" class="btn btn-danger" data-dismiss="modal" ng-hide="isCreateIncrement"ng-click="deleteIncrement()">Delete</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="mdlIncrementDelete" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Delete Increment</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure to delete <b ng-bind="deleteName"></b> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteIncrement()">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->

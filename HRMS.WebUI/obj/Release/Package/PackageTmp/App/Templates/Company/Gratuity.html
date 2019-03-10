@@ -1,0 +1,170 @@
+﻿<!-- page content -->
+
+<div class="right_col" role="main">
+    <style>
+        input[type=number] {width: 100px;}
+        .bg-blue{background-color:#7fb0da !important;color:black; }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.2/css/fixedHeader.dataTables.min.css">
+    <div class="">
+        <div class="page-title">
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Gratuity <small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" ng-form name="frmGratuity">
+                        <!--<div class="dropdown dropdown-scroll  col-lg-2">
+                            <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-model="gratuity.MonthID" ng-class="frmGratuity.txtMonthID.$invalid && frmGratuity.txtMonthID.$dirty ? 'border-red' : ''" name="txtMonthID" required>
+                                <span ng-bind="selectedMonthName">Month</span><span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <div class="input-group input-group-sm search-control">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Month" ng-model="query" />
+                                    </div>
+                                </li>
+                                <li role="presentation" ng-repeat='item in months | filter:query'>
+                                    <a href="javascript:void(0)" ng-click="setMonth(item);"> {{item}} </a>
+                                </li>
+                            </ul>
+                        </div>-->
+                        <!--<label>Company :</label>-->
+                       <div class="col-lg-1"><label>Settlement Date :</label></div>
+                        <fieldset class="col-lg-2">
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="xdisplay_inputx has-feedback">
+                                        <input type="text" class="form-control has-feedback-left" ng-class="frmGratuity.txtSettlementDate.$invalid && frmGratuity.txtSettlementDate.$dirty ? 'border-red' : ''" name="txtSettlementDate" id="txtSettlementDate" placeholder="Settlement Date" ng-model="gratuity.SettlementDate" aria-describedby="inputSuccess2Status3" datepicker required>
+                                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <span class="text-danger right" ng-show="frmGratuity.txtSettlementDate.$dirty && frmGratuity.txtSettlementDate.$error.required">Required</span>
+                        <div class="col-lg-1"><label>Company :</label></div>
+                        <div class="dropdown dropdown-scroll  col-lg-2">
+                            
+                            <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown" ng-class="frmGratuity.txtCompanyID.$invalid && frmGratuity.txtCompanyID.$dirty ? 'border-red' : ''" name="txtCompanyID" ng-model="gratuity.CompanyID" required>
+                                <span id="txtSelectedCompanyName" ng-bind="selectedCompanyName"></span><span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <div class="input-group input-group-sm search-control">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Company" ng-model="companyy" />
+                                    </div>
+                                </li>
+                                <li role="presentation" ng-repeat='item in companies | filter:companyy'>
+                                    <a href="javascript:void(0)" ng-click="setCompany(item.CompanyID,item.CompanyName)"> {{item.CompanyName}} </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="button" class="form-control btn-success btn btn-sm" style="width:150px;float:right;" value="Generate Gratuity" ng-click="generateGratuity()" />
+                        <div class="table-responsive col-lg-12" style="max-height:75vh;overflow:auto;">
+                            <table id="tblGratuity" class="table  table-bordered table-responsive  jambo_table bulk_action">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="icheckbox_flat-blue checkbox-container" ng-click="switchChecked('chkAll');$event.stopPropagation();"><input type="checkbox" id="chkAll" class="flat" /> <ins class="iCheck-helper"></ins></div>
+                                        </th>
+                                        <th class="hidden">GratuityID</th>
+                                        <th>Settlement Date</th>
+                                        <th>EmployeeName</th>
+                                        <th>Joining Dates</th>
+                                        <th>Total Wroking Days</th>
+                                        <th>Total Leave Pending</th>
+                                        
+                                        <th>Total Leave Salary Pending</th>
+                                        <th>Notice Period Months</th>
+                                        <th>Notice Period Amount</th>
+                                        <th>Annual Ticket</th>
+                                        <th>Repatriation Ticket</th>
+                                        <th>Addition Desc 1</th>
+                                        <th>Addition Amount 1</th>
+                                        <th>Addition Desc 2</th>
+                                        <th>Addition Amount 2</th>
+                                        <th>Deduction Desc 1</th>
+                                        <th>Deduction Amount 1</th>
+                                        <th>Deduction Desc 2</th>
+                                        <th>Deduction Amount 2</th>
+                                        <th>Deduction Desc 3</th>
+                                        <th>Deduction Amount 3</th>
+                                        <th>Deduction Desc 4</th>
+                                        <th>Deduction Amount 4</th>
+                                        <th>Gratuity Amount</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <input type="button" class="form-control btn-success btn btn-sm" style="margin-top: 10px;width:150px;float:right;" value="Process Gratuity" ng-show="selectedEmployees.length > 0" ng-click="processGratuity()" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <!--<div id="mdlGratuity" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Gratuity</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="txtGratuityId" ng-model="gratuity.GratuityId" />
+
+                    <label>Employee Name :</label>
+                    <div class="dropdown dropdown-scroll">
+                        <button class="btn btn-default dropdown-toggle col-lg-12" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            <span id="txtSelectedEmployeeName" ng-bind="selectedEmployeeName"></span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <div class="input-group input-group-sm search-control">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Employee" ng-model="query" />
+                                </div>
+                            </li>
+                            <li role="presentation" ng-repeat='item in employees | filter:query'>
+                                <a href="javascript:void(0)" ng-click="setEmployee(item.EmployeeID,item.EmployeeName)"> {{item.EmployeeName}} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <label>Basic :</label> <input type="number" id="txtBasic" ng-model="gratuity.Basic" class="form-control input-sm" />
+                    <label>Telephone :</label> <input type="number" id="txtTelephone" ng-model="gratuity.Telephone" class="form-control input-sm" />
+                    <label>Housing :</label> <input type="number" id="txtHousing" ng-model="gratuity.Housing" class="form-control input-sm" />
+                    <label>Transport :</label> <input type="number" id="txtTransport " ng-model="gratuity.Transport " class="form-control input-sm" />
+                    <label>Total Gratuity :</label> <input type="number" id="txtTotalGratuity " ng-model="gratuity.TotalSalary" class="form-control input-sm" />
+                    <label>Other Text  :</label> <input id="txtOtherText  " ng-model="gratuity.OtherText  " class="form-control input-sm" />
+                    <label>Other Number :</label> <input id="txtOtherNumber " ng-model="gratuity.OtherNumber " class="form-control input-sm" />
+                    <label>Remarks :</label> <input type="text" id="txtGratuityRemarks" ng-model="gratuity.Remarks" class="input-sm form-control"   />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+</div>
+
+<!-- /page content -->

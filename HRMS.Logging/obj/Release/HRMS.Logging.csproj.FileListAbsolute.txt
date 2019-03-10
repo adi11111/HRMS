@@ -1,0 +1,5 @@
+C:\Projects\HRMS\HRMS.Logging\bin\Release\HRMS.Logging.dll
+C:\Projects\HRMS\HRMS.Logging\bin\Release\HRMS.Logging.pdb
+C:\Projects\HRMS\HRMS.Logging\obj\Release\HRMS.Logging.csprojResolveAssemblyReference.cache
+C:\Projects\HRMS\HRMS.Logging\obj\Release\HRMS.Logging.dll
+C:\Projects\HRMS\HRMS.Logging\obj\Release\HRMS.Logging.pdb

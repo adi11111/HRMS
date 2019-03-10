@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @{ 
+        Layout = null;
+    }
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HR Management System </title>
+    <!-- Bootstrap -->
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+
+    <link href="~/Content/nprogress.css" rel="stylesheet" />
+    <!-- iCheck -->
+
+    <link href="~/Content/green.css" rel="stylesheet" />
+
+    <!-- bootstrap-progressbar -->
+
+    <link href="~/Content/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" />
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+
+    <link href="~/Content/daterangepicker.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+</head>
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="forgetPassword"></a>
+        <a class="hiddenanchor" id="signin"></a>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form action="~/Account/Login" method="post">
+                        <h1>Login Form</h1>
+                        <div>
+                            <input type="text" class="form-control" id="txtUserName" name="UserName" placeholder="User Name"  required />
+                            @*<p ng-show="loginForm.txtUserName.$invalid && !loginForm.txtUserName.$pristine" class="help-block"> Please enter your password</p>*@
+                        </div>
+                        <div>
+                          @*  pattern=".{8,12}"*@
+                            <input type="password" class="form-control" id="txtPassword" name="Password" placeholder="Password" required  title="8 to 12 characters" />
+                            @*<p ng-show="loginForm.txtPassword.$invalid && !loginForm.txtPassword.$pristine" class="help-block"> Please enter your password</p>*@
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-default submit" value="Submit" />
+                            <!--<a class="reset_pass" href="#">Lost your password?</a>-->
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="separator">
+                            <p class="change_link">
+                                Don't Remember Password?
+                                <a href="#forgetPassword" class="to_register"> Forget Password </a>
+                            </p>
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1><img style="margin-top: -10px;" src="~/Content/Images/gw-logo.png" /> HR Management System</h1>
+                                <p>©2016 All Rights Reserved. Gulfwarranties.<br /> Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <div id="forget" class="animate form registration_form">
+                <section class="login_content">
+                    <form action="~/Account/ForgetPassword">
+                        <h1>Forget Password</h1>
+                        <!--<div>
+                            <input type="text" class="form-control" placeholder="Username" required="" />
+                        </div>-->
+                        <div>
+
+                            <input type="email" class="form-control" id="txtEmail" name="Email" placeholder="Email"  required>
+                            <p class="help-block"> Please enter your email (format, e.g. email@email.com)</p>
+                        </div>
+                        <!--<div>
+                            <input type="password" class="form-control" placeholder="Password" required="" />
+                        </div>-->
+                        <div>
+                            <input type="submit" class="btn btn-default submit" value="Submit" />
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="separator">
+                            <p class="change_link">
+                                Remember Credentials ?
+                                <a href="#signin" class="to_register"> Log in </a>
+                            </p>
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1><img style="margin-top: -10px;" src="~/Content/Images/gw-logo.png" /> HR Management System</h1>
+                                <p>©2017 All Rights Reserved. Gulfwarranties.<br /> Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

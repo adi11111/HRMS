@@ -1,0 +1,72 @@
+﻿Installing assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Installing service NotificationService...
+Creating EventLog source NotificationService in log Application...
+Rolling back assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Restoring event log to previous state for source NotificationService.
+Installing assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Rolling back assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Installing assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Installing service NotificationService...
+Creating EventLog source NotificationService in log Application...
+Rolling back assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Restoring event log to previous state for source NotificationService.
+Installing assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Rolling back assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Installing assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Installing service NotificationService...
+Creating EventLog source NotificationService in log Application...
+Rolling back assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Restoring event log to previous state for source NotificationService.
+Installing assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
+Installing service NotificationService...
+Service NotificationService has been successfully installed.
+Creating EventLog source NotificationService in log Application...
+Committing assembly 'C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.InstallLog
+   assemblypath = C:\Projects\HRMS\HRMS.Service\bin\Debug\HRMS.Service.exe
